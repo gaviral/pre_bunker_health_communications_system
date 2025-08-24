@@ -1,0 +1,28 @@
+warning: `VIRTUAL_ENV=/Users/aviralgarg/code/idle_runner/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+=== Testing MessageReviewQueue Initialization ===
+✅ MessageReviewQueue initialized correctly
+
+=== Testing Add to Queue ===
+✅ Added message test_msg_1 to queue with risk score 0.7
+
+=== Testing Queue Operations ===
+✅ Queue operations (approve, reject, revision) working correctly
+
+=== Testing Queue Filtering and Sorting ===
+✅ Queue filtering and sorting working correctly
+
+=== Testing Queue Statistics ===
+Queue statistics: {'total_items': 4, 'pending_review': 2, 'approved': 1, 'rejected': 1, 'revision_requested': 0, 'priority_breakdown': {'high': 0, 'medium': 1, 'low': 1}, 'average_risk_score': 0.6, 'queue_health': 'healthy'}
+✅ Queue statistics calculation working correctly
+
+=== Testing WorkflowManager ===
+High risk workflow: {'min_reviewers': 2, 'required_specialties': ['clinical', 'risk'], 'risk_level': 'high_risk', 'recommended_reviewers': ['health_expert', 'risk_assessor'], 'estimated_review_time': '55 minutes'}
+✅ WorkflowManager routing working correctly
+
+=== Testing DashboardGenerator ===
+✅ DashboardGenerator HTML generation working correctly
+
+=== Testing Complete Integration Workflow ===
+✅ Complete integration workflow working correctly
+
+✅ v1.18 Ops Dashboard - Human review queue and workflow management system
