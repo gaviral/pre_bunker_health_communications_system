@@ -4,13 +4,19 @@ import asyncio
 import re
 from typing import List, Dict, Any, Optional
 from src.personas.base_personas import AudiencePersona, STANDARD_PERSONAS
+from src.personas.health_specific import get_all_personas, get_personas_by_topic
 from src.health_kb.medical_terms import is_medical_term
 
 class PersonaInterpreter:
     """Orchestrates multiple personas to interpret health communications"""
     
-    def __init__(self, personas: List[AudiencePersona] = None):
-        self.personas = personas or STANDARD_PERSONAS.copy()
+    def __init__(self, personas: List[AudiencePersona] = None, topic_based: bool = False, health_topic: str = None):
+        if topic_based and health_topic:
+            self.personas = get_personas_by_topic(health_topic)
+        elif personas is None:
+            self.personas = get_all_personas()  # Use expanded persona set by default
+        else:
+            self.personas = personas
         self.concern_keywords = [
             'worried', 'scared', 'confused', 'unclear', 'dangerous',
             'concerning', 'troubling', 'suspicious', 'doubt', 'uncertain',
