@@ -1,72 +1,79 @@
-OpenAI Agents SDK with local LLM
+# OpenAI Agents SDK with Local LLM
 
 The OpenAI Agents SDK is a Python-based framework designed for building production-ready AI agent applications. It provides a streamlined approach to creating agentic systems where multiple AI agents collaborate through task delegation and tool usage.
 
-Core Components:
-Agent Loop: Manages iterative task execution with integrated tool usage and result processing.
-Handoff System: Enables dynamic task delegation between specialized agents using triaging logic.
-Guardrails: Implements parallel validation pipelines for input sanitization and output safety checks.
-Tracing: Built-in observability with execution flow visualization and performance monitoring.
-And The Large Language Model (LLM) is the core intelligence behind the OpenAI Agents SDK workflow. It powers the agent's decision-making, natural language understanding, and reasoning abilities.
-Before diving into the technical details, let’s explore its benefits and how it differs from other existing agentic frameworks.
+## Core Components
 
-Benefits
-Production Readiness
-1.1. Simplified upgrade path from experimental Swarm framework
+- **Agent Loop**: Manages iterative task execution with integrated tool usage and result processing.
+- **Handoff System**: Enables dynamic task delegation between specialized agents using triaging logic.
+- **Guardrails**: Implements parallel validation pipelines for input sanitization and output safety checks.
+- **Tracing**: Built-in observability with execution flow visualization and performance monitoring.
 
-1.2. Built-in rate limiting and error handling
+The Large Language Model (LLM) is the core intelligence behind the OpenAI Agents SDK workflow. It powers the agent's decision-making, natural language understanding, and reasoning abilities.
 
-1.3. Enterprise-grade security controls for LLM interactions
+Before diving into the technical details, let's explore its benefits and how it differs from other existing agentic frameworks.
 
-2. Developer Experience
+## Benefits
 
-2.1. reduction in boilerplate code compared to vanilla implementations
+### Production Readiness
 
-2.2 Integrated debugging through execution tracing dashboard
+1. Simplified upgrade path from experimental Swarm framework
+2. Built-in rate limiting and error handling
+3. Enterprise-grade security controls for LLM interactions
 
-2.3. Python-native implementation using modern type hints
+### Developer Experience
 
-Framework Comparison
+1. Reduction in boilerplate code compared to vanilla implementations
+2. Integrated debugging through execution tracing dashboard
+3. Python-native implementation using modern type hints
+
+## Framework Comparison
 There are many agentic frameworks available today. Let’s take a quick look at how this protocol compares with other popular frameworks
 For those like me encountering the term “Pydantic-based validation” for the first time:
 
 Pydantic validation is the process of ensuring that input data matches the expected structure, types, and constraints by using Pydantic models. It automates type-checking and data parsing, raising errors when data is invalid.
 
-Workflow
-As I mentioned before that, the LLM is the core intelligence behind the OpenAI Agents SDK workflow. It powers the agent’s decision-making, natural language understanding, and reasoning abilities. Here’s how it fits into each stage of the workflow:
+## Workflow
 
-Input Interpretation. The process starts when the agent receives an input. This could be a user query, a task to perform, or data from external sources.
-Decision-Making (Agent Logic). The LLM decides whether the agent should process the request internally or invoke external tools. It reasons through complex prompts and selects the best approach.
-Tool Invocation. When the agent receives input, it decides whether it needs external tools (e.g., web search, database queries) to fulfill the request. It calls the relevant tool and processes the output.
-Reasoning and Iteration (Agent Loop). The agent loop is powered by the LLM. It enables the agent to:
-Reflect on intermediate outputs.
-Determine if further actions are needed.
-Continue processing until a valid response is generated.
-5. Task Delegation (Handoff Mechanism). It delegates tasks to specialized sub-agents. This is useful for breaking down complex workflows.
+As mentioned before, the LLM is the core intelligence behind the OpenAI Agents SDK workflow. It powers the agent's decision-making, natural language understanding, and reasoning abilities. Here's how it fits into each stage of the workflow:
 
-6. Validation and Guardrails. Guardrails ensure that inputs and outputs meet specific validation and safety standards. They prevent the agent from executing unsafe or invalid actions.
+1. **Input Interpretation**: The process starts when the agent receives an input. This could be a user query, a task to perform, or data from external sources.
 
-7. Response Generation. Finally, the LLM synthesizes all gathered information into a coherent, human-readable response.
+2. **Decision-Making (Agent Logic)**: The LLM decides whether the agent should process the request internally or invoke external tools. It reasons through complex prompts and selects the best approach.
+
+3. **Tool Invocation**: When the agent receives input, it decides whether it needs external tools (e.g., web search, database queries) to fulfill the request. It calls the relevant tool and processes the output.
+
+4. **Reasoning and Iteration (Agent Loop)**: The agent loop is powered by the LLM. It enables the agent to:
+   - Reflect on intermediate outputs
+   - Determine if further actions are needed
+   - Continue processing until a valid response is generated
+
+5. **Task Delegation (Handoff Mechanism)**: It delegates tasks to specialized sub-agents. This is useful for breaking down complex workflows.
+
+6. **Validation and Guardrails**: Guardrails ensure that inputs and outputs meet specific validation and safety standards. They prevent the agent from executing unsafe or invalid actions.
+
+7. **Response Generation**: Finally, the LLM synthesizes all gathered information into a coherent, human-readable response.
 
 The next image illustrates the entire workflow.
 
  
 
-Let’s summarize the workflow:
+### Workflow Summary
 
-Input: User provides a request.
-Agent: Receives and interprets the input.
-Tools: Calls external tools (e.g., search, data retrieval).
-Agent Loop: Iterates until the task is complete.
-Handoff: Delegates tasks to specialized agents if needed.
-Guardrails: Ensures input/output compliance.
-Output: Delivers the final response to the user.
-Having clarified the concept of an agent, let’s now explore a quick example that demonstrates how the Agent SDK operates.
+- **Input**: User provides a request
+- **Agent**: Receives and interprets the input
+- **Tools**: Calls external tools (e.g., search, data retrieval)
+- **Agent Loop**: Iterates until the task is complete
+- **Handoff**: Delegates tasks to specialized agents if needed
+- **Guardrails**: Ensures input/output compliance
+- **Output**: Delivers the final response to the user
 
-Get started.
+Having clarified the concept of an agent, let's now explore a quick example that demonstrates how the Agent SDK operates.
+
+## Getting Started
 First, install Ollama on your local machine. Then, obtain your OpenAI API key to use the SDK.
 
-Step 1. Run your LLM model on Ollama
+### Step 1: Run your LLM model on Ollama
 
 ```bash
 ollama run qwen2.5:7b  # you can use any model like llama3.2
@@ -79,7 +86,7 @@ By default, the SDK looks for the OPENAI_API_KEY environment variable for LLM re
 ```bash
 export OPENAI_API_KEY="YOUR API KEY GOES HERE"
 ```
-Step 2. Active your conda environment:
+### Step 2: Activate your conda environment
 
 ```bash
 conda activate YOUR_ENV
@@ -89,20 +96,22 @@ We will use the content generation example from CrewAI in our book and modify it
 
  
 
-Step 3. To get started, open a new notebook and install the necessary packages. Here’s how you can do it:
+### Step 3: Install necessary packages
+
+To get started, open a new notebook and install the necessary packages. Here's how you can do it:
 
 ```bash
 !pip install -U openai-agents duckduckgo-search
 ```
 Note that, to get started with the OpenAI Agents SDK, we only need a single unified Python library: openai-agents
 
-Step 4. Import libraries.
+### Step 4: Import libraries
 
 ```python
 from agents import Agent, Runner, OpenAIChatCompletionsModel, AsyncOpenAI, OpenAIChatCompletionsModel, function_tool
 from duckduckgo_search import DDGS
 ```
-Optional package and libraries.
+#### Optional packages and libraries
 
 ```bash
 !pip install nest-asyncio
@@ -113,7 +122,7 @@ nest_asyncio.apply()
 ```
 For running the OpenAI SDK on Jupyter Notebook or Google Colab, you need to import the package as shown above. This will prevent errors like: RuntimeError: This event loop is already running.
 
-Step 5. Configure the LLM.
+### Step 5: Configure the LLM
 
 ```python
 model = OpenAIChatCompletionsModel( 
@@ -123,7 +132,7 @@ model = OpenAIChatCompletionsModel(
 ```
 Change the host and port according to your Ollama configuration.
 
-Step 6. Using a Function calling.
+### Step 6: Using Function Calling
 
 To integrate DuckDuckGo search with the OpenAI Agent SDK, we need to use the Function Calling feature. This will allow us to fetch up to 5 news articles related to a given topic.
 
@@ -142,16 +151,18 @@ def get_news_articles(topic):
     else:
         return f"Could not find news results for {topic}."
 ```
-Here,
+**Explanation:**
 
-@function_tool is a decorator provided by the OpenAI Agent SDK. It registers the get_news_articles function as a callable tool that can be accessed by the agent.
-get_news_articles(topic) is a function that takes a topic as input and retrieves related news articles.
-What is happing under the hood:
+- `@function_tool` is a decorator provided by the OpenAI Agent SDK. It registers the `get_news_articles` function as a callable tool that can be accessed by the agent.
+- `get_news_articles(topic)` is a function that takes a topic as input and retrieves related news articles.
 
-This function integrates DuckDuckGo search with the OpenAI Agent SDK.
-It fetches up to 5 news articles related to a given topic.
-Results are returned in a human-readable format or an error message if no articles are found.
-Step 7. Create the content_planner_agent.
+**What is happening under the hood:**
+
+- This function integrates DuckDuckGo search with the OpenAI Agent SDK
+- It fetches up to 5 news articles related to a given topic
+- Results are returned in a human-readable format or an error message if no articles are found
+
+### Step 7: Create the content_planner_agent
 
 The agent will define with a Name, instruction and tools that will use to fetch the related articles..
 
@@ -163,14 +174,15 @@ content_planner_agent = Agent(
     model=model
 )
 ```
-Here,
+**Explanation:**
 
-The content_planner_agent is an OpenAI Agent that:
+The `content_planner_agent` is an OpenAI Agent that:
 
-Plans blog posts on a given topic.
-Fetches up-to-date news using the get_news_articles tool.
-Generates a structured outline using the specified language model.
-Step 8. Create the writer_agent.
+- Plans blog posts on a given topic
+- Fetches up-to-date news using the `get_news_articles` tool
+- Generates a structured outline using the specified language model
+
+### Step 8: Create the writer_agent
 
 ```python
 writer_agent = Agent(
@@ -179,12 +191,13 @@ writer_agent = Agent(
     model=model
 )
 ```
-This above code defines an AI agent called writer_agent, which:
+This code defines an AI agent called `writer_agent`, which:
 
-Produces technical blog posts with a focus on detail and accuracy.
-Uses the OpenAI model to generate outputs.
-Accepts a topic dynamically via the {topic} placeholder.
-Step 9. Putting it all together, Agents workflow.
+- Produces technical blog posts with a focus on detail and accuracy
+- Uses the OpenAI model to generate outputs
+- Accepts a topic dynamically via the `{topic}` placeholder
+
+### Step 9: Putting it all together - Agents workflow
 
 ```python
 # Agent workflow
@@ -215,32 +228,34 @@ def openai_agent_workflow(topic):
 topic = "Step by step example of installing Apache Ignite v3 on Docker."
 print(openai_agent_workflow(topic))
 ```
-The openai_agent_workflow function orchestrates the collaboration between multiple OpenAI agents to:
+The `openai_agent_workflow` function orchestrates the collaboration between multiple OpenAI agents to:
 
-Fetch articles using the content_planner_agent.
-Refine the content using the writer_agent.
-Deliver a final, polished article.
-How the Workflow functions together:
-Content Collection:
-The content_planner_agent gathers real-time articles using DuckDuckGo.
-2. Editing & Refinement:
+- Fetch articles using the `content_planner_agent`
+- Refine the content using the `writer_agent`
+- Deliver a final, polished article
 
-The writer_agent takes the raw content and crafts a detailed, coherent, and technically accurate blog post.
-3. Output:
+#### How the Workflow Functions Together:
 
-The final blog post is printed and returned.
+1. **Content Collection**: The `content_planner_agent` gathers real-time articles using DuckDuckGo
+
+2. **Editing & Refinement**: The `writer_agent` takes the raw content and crafts a detailed, coherent, and technically accurate blog post
+
+3. **Output**: The final blog post is printed and returned
  
-Step 10. Tracing.
+### Step 10: Tracing
 
-The Agents SDK automatically traces agent runs, making it easy to track and debug the behavior of your agents. You can access the tracing information via theOpenAI Dashboard.
+The Agents SDK automatically traces agent runs, making it easy to track and debug the behavior of your agents. You can access the tracing information via the OpenAI Dashboard.
 
 Press enter or click to view image in full size
 
-Enhancements that you could add here:
+## Enhancements
 
-Error Handling: Manage cases where no articles are found.
-Multi-Agent orchestration: Add an editor agent for grammar and tone improvements.
-Parallel Execution: Use async with Runner.run() for faster orchestration.
+You could add the following enhancements:
+
+- **Error Handling**: Manage cases where no articles are found
+- **Multi-Agent Orchestration**: Add an editor agent for grammar and tone improvements
+- **Parallel Execution**: Use async with `Runner.run()` for faster orchestration
+
 For example, you can add the following Agent and asynchronous agent orchestrations as shown below:
 
 ```python
