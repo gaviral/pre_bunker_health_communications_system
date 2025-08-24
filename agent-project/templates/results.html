@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRE-BUNKER Analysis Results</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        .back-link:hover {
+            background: #3498db;
+            color: white;
+        }
+        .message-box {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        .risk-high { border-left-color: #e74c3c; background: #fdf2f2; }
+        .risk-medium { border-left-color: #f39c12; background: #fef9e7; }
+        .risk-low { border-left-color: #27ae60; background: #eafaf1; }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .summary-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e1e8ed;
+        }
+        .summary-card h4 {
+            margin: 0 0 10px 0;
+            color: #5a6c7d;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .summary-card .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+        }
+        
+        .claims-list, .personas-list, .recommendations-list {
+            list-style: none;
+            padding: 0;
+        }
+        .claims-list li, .personas-list li, .recommendations-list li {
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .risk-score {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .risk-score.high { background: #e74c3c; }
+        .risk-score.medium { background: #f39c12; }
+        .risk-score.low { background: #27ae60; }
+        
+        .evidence-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .evidence-status.well_supported { background: #27ae60; color: white; }
+        .evidence-status.moderately_supported { background: #f39c12; color: white; }
+        .evidence-status.limited_support { background: #e67e22; color: white; }
+        .evidence-status.insufficient_evidence { background: #e74c3c; color: white; }
+        
+        .processing-time {
+            text-align: right;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        
+        .collapsible {
+            cursor: pointer;
+            padding: 10px;
+            background: #f1f2f6;
+            border: none;
+            width: 100%;
+            text-align: left;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .collapsible:hover {
+            background: #ddd;
+        }
+        .content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background: #fafafa;
+        }
+        .content.active {
+            max-height: 500px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Analyze Another Message</a>
+        
+        <h1>🛡️ PRE-BUNKER Analysis Results</h1>
+        
+        <div class="message-box risk-{{ risk_report.overall_risk_assessment }}">
+            <h3>Original Message:</h3>
+            <p><strong>"{{ message }}"</strong></p>
+            <p><strong>Overall Risk Level: 
+                {% if risk_report.overall_risk_assessment == 'high_risk' %}
+                    🔴 HIGH RISK
+                {% elif risk_report.overall_risk_assessment == 'medium_risk' %}
+                    🟡 MEDIUM RISK
+                {% else %}
+                    🟢 LOW RISK
+                {% endif %}
+            </strong></p>
+        </div>
+        
+        <!-- Summary Statistics -->
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h4>Claims Detected</h4>
+                <div class="value">{{ risk_report.summary_statistics.total_claims }}</div>
+            </div>
+            <div class="summary-card">
+                <h4>High Risk Claims</h4>
+                <div class="value">{{ risk_report.summary_statistics.high_risk_claims }}</div>
+            </div>
+            <div class="summary-card">
+                <h4>Average Risk Score</h4>
+                <div class="value">{{ "%.1f" | format(risk_report.summary_statistics.average_risk_score * 100) }}%</div>
+            </div>
+            <div class="summary-card">
+                <h4>Evidence Coverage</h4>
+                <div class="value">{{ "%.0f" | format(risk_report.summary_statistics.evidence_coverage_rate * 100) }}%</div>
+            </div>
+            <div class="summary-card">
+                <h4>Personas Concerned</h4>
+                <div class="value">{{ risk_report.summary_statistics.personas_with_concerns }}/{{ risk_report.summary_statistics.personas_analyzed }}</div>
+            </div>
+            <div class="summary-card">
+                <h4>Countermeasures</h4>
+                <div class="value">{{ risk_report.summary_statistics.countermeasures_generated }}</div>
+            </div>
+        </div>
+        
+        <!-- Key Findings -->
+        <div class="section">
+            <h2>🔍 Key Findings</h2>
+            {% if risk_report.key_findings %}
+                <ul class="recommendations-list">
+                    {% for finding in risk_report.key_findings %}
+                    <li>{{ finding }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No critical findings identified.</p>
+            {% endif %}
+        </div>
+        
+        <!-- Priority Actions -->
+        <div class="section">
+            <h2>⚡ Priority Actions</h2>
+            {% if risk_report.priority_actions %}
+                <ul class="recommendations-list">
+                    {% for action in risk_report.priority_actions %}
+                    <li>
+                        <strong>Priority {{ action.priority }}:</strong> {{ action.description }}
+                        {% if action.urgency %}
+                            <span class="risk-score {{ action.urgency }}">{{ action.urgency.upper() }}</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No immediate actions required.</p>
+            {% endif %}
+        </div>
+        
+        <!-- Claims Analysis -->
+        <button class="collapsible" onclick="toggleContent('claims-content')">📝 Claims Analysis ({{ pipeline_result.claims|length }})</button>
+        <div id="claims-content" class="content">
+            {% if pipeline_result.claims %}
+                <ul class="claims-list">
+                    {% for claim in pipeline_result.claims %}
+                    <li>
+                        <strong>"{{ claim.text }}"</strong>
+                        <span class="risk-score {{ 'high' if claim.base_risk_score >= 0.7 else 'medium' if claim.base_risk_score >= 0.4 else 'low' }}">
+                            Risk: {{ "%.1f" | format(claim.base_risk_score * 100) }}%
+                        </span>
+                        <br>
+                        <small>Type: {{ claim.claim_type }} | Confidence: {{ "%.1f" | format(claim.confidence * 100) }}%</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No claims detected in the message.</p>
+            {% endif %}
+        </div>
+        
+        <!-- Persona Reactions -->
+        <button class="collapsible" onclick="toggleContent('personas-content')">👥 Audience Reactions ({{ pipeline_result.persona_interpretations|length }})</button>
+        <div id="personas-content" class="content">
+            {% if pipeline_result.persona_interpretations %}
+                <ul class="personas-list">
+                    {% for persona in pipeline_result.persona_interpretations %}
+                    <li>
+                        <strong>{{ persona.persona }}:</strong> 
+                        <span class="risk-score {{ persona.concern_level }}">{{ persona.concern_level.upper() }} CONCERN</span>
+                        <br>
+                        {% if persona.potential_misreading %}
+                            <strong>Concerns:</strong> {{ persona.potential_misreading | join(', ') }}
+                        {% endif %}
+                        {% if persona.emotional_reaction %}
+                            <br><strong>Emotional Response:</strong> {{ persona.emotional_reaction }}
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No persona analysis available.</p>
+            {% endif %}
+        </div>
+        
+        <!-- Evidence Validation -->
+        <button class="collapsible" onclick="toggleContent('evidence-content')">📚 Evidence Validation ({{ pipeline_result.evidence_validations|length }})</button>
+        <div id="evidence-content" class="content">
+            {% if pipeline_result.evidence_validations %}
+                <ul class="claims-list">
+                    {% for evidence in pipeline_result.evidence_validations %}
+                    <li>
+                        <strong>Claim:</strong> "{{ evidence.claim }}"
+                        <br>
+                        <strong>Status:</strong> 
+                        <span class="evidence-status {{ evidence.validation_status }}">{{ evidence.validation_status.replace('_', ' ').title() }}</span>
+                        <br>
+                        <strong>Confidence:</strong> {{ "%.1f" | format(evidence.confidence_score * 100) }}%
+                        {% if evidence.relevant_sources %}
+                            <br><strong>Sources:</strong> {{ evidence.relevant_sources | join(', ') }}
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No evidence validation performed.</p>
+            {% endif %}
+        </div>
+        
+        <!-- Countermeasures -->
+        <button class="collapsible" onclick="toggleContent('countermeasures-content')">🛠️ Recommended Countermeasures ({{ pipeline_result.countermeasures|length }})</button>
+        <div id="countermeasures-content" class="content">
+            {% if pipeline_result.countermeasures %}
+                <ul class="claims-list">
+                    {% for cm in pipeline_result.countermeasures %}
+                    <li>
+                        <strong>For claim:</strong> "{{ cm.claim }}"
+                        <br>
+                        <strong>Risk Level:</strong> 
+                        <span class="risk-score {{ cm.risk_level }}">{{ cm.risk_level.upper() }}</span>
+                        {% if cm.top_countermeasure %}
+                            <br><br>
+                            <strong>Recommended Response:</strong><br>
+                            {{ cm.top_countermeasure.content }}
+                            <br><br>
+                            <strong>Effectiveness:</strong> {{ "%.1f" | format(cm.top_countermeasure.effectiveness_score * 100) }}%
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No countermeasures generated.</p>
+            {% endif %}
+        </div>
+        
+        <!-- Enhanced Analysis -->
+        {% if risk_report.enhanced_analysis %}
+        <button class="collapsible" onclick="toggleContent('analysis-content')">🔬 Enhanced AI Analysis</button>
+        <div id="analysis-content" class="content">
+            <div style="white-space: pre-line;">{{ risk_report.enhanced_analysis }}</div>
+        </div>
+        {% endif %}
+        
+        <div class="processing-time">
+            Analysis completed in {{ processing_time }} seconds
+        </div>
+    </div>
+    
+    <script>
+        function toggleContent(contentId) {
+            var content = document.getElementById(contentId);
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+            } else {
+                content.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
