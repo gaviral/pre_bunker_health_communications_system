@@ -86,7 +86,7 @@ uv init agent-project
 cd agent-project
 uv python pin 3.13.7
 ```
-Modified CrewAI example for Agent SDK.
+OpenAI Agent SDK example.
 
  
 
