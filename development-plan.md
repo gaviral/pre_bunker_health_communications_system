@@ -42,6 +42,8 @@ Iterative development with minimal increments using Python 3.13.7.
 **How**: DDGS().text(topic, max_results=5), format as Title/URL/Description  
 **Check**: Returns 5 articles or error message, human-readable format
 
+**Development Status**: ✅ Completed - duckduckgo-search dependency added, search_tool.py created with @function_tool decorated get_news_articles(), error handling for search failures, proper formatting with Title/URL/Description. Tests pass: tool registration works, agent can call search, returns formatted articles
+
 ## v0.7: Multi-Agent System
 **What**: ContentPlanner + Writer agents  
 **How**: Agent(name, instructions, tools, model) - planner gets articles, writer creates posts  
