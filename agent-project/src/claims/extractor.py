@@ -10,16 +10,18 @@ from src.health_kb.claim_types import HealthClaim, ClaimType, classify_claim_typ
 class ClaimExtractor:
     def __init__(self):
         self.claim_patterns = [
-            # Efficacy patterns
-            r'(\w+) (?:is|are) (?:effective|safe|dangerous|harmful|good|bad)',
+            # Efficacy patterns (fixed to handle modifiers)
+            r'(\w+) (?:is|are) (?:highly |very |extremely )?(?:effective|safe|dangerous|harmful|good|bad)',
             r'(\w+) (?:prevents|treats|cures|heals|causes) (\w+)',
             r'(\w+) (?:works|helps|stops|reduces)',
             r'(\w+) (?:success rate|effectiveness|efficacy)',
+            r'(\d+)% (?:effective|efficacy)',
             
             # Safety patterns  
             r'(\w+) (?:side effects|adverse reactions|risks)',
             r'(\w+) (?:causes|leads to|results in) (\w+)',
             r'(?:safe|dangerous|risky|harmful) (?:to use|for) (\w+)',
+            r'side effects (?:are|include) (?:mild|severe|temporary)',
             
             # Dosage patterns
             r'take (\d+) (\w+) (?:daily|weekly|monthly|times)',
@@ -31,9 +33,12 @@ class ClaimExtractor:
             r'best time to (?:take|use|administer) (\w+)',
             r'(\w+) should be (?:taken|used) (?:when|if|during)',
             
-            # Authority patterns
-            r'(?:WHO|CDC|FDA|doctors|experts|studies) (?:recommend|say|show|prove) (?:that )?(\w+)',
-            r'according to (?:WHO|CDC|FDA|research|studies), (\w+)',
+            # Authority patterns (fixed for real usage)
+            r'(?:WHO|CDC|FDA) (?:shows|demonstrates|recommends|says|reports)',
+            r'(?:research|studies|trials) (?:show|demonstrate|indicate)',
+            r'(?:doctors|experts) (?:recommend|say|advise)',
+            r'according to (?:WHO|CDC|FDA|research|studies)',
+            r'approved by (?:WHO|CDC|FDA)',
             
             # Comparison patterns
             r'(\w+) (?:is better than|works better than|safer than) (\w+)',
@@ -41,7 +46,11 @@ class ClaimExtractor:
             
             # Absolutist claims
             r'(\w+) (?:always|never|100%|guaranteed|completely|totally) (\w+)',
-            r'(?:all|every|no) (\w+) (?:will|can|should) (\w+)'
+            r'(?:all|every|no) (\w+) (?:will|can|should) (\w+)',
+            
+            # Additional health claim patterns
+            r'(\w+) (?:should|must) (?:consult|talk to) (?:healthcare provider|doctor)',
+            r'(\w+) (?:vaccine|medication|treatment) (?:is|are) (?:approved|recommended)'
         ]
     
     def extract_pattern_claims(self, text: str) -> List[str]:
