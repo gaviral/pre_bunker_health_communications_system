@@ -7,7 +7,7 @@ Iterative development with minimal increments using Python 3.13.7.
 **How**: Create pyproject.toml, .gitignore, src/ dir  
 **Check**: `uv sync` works, imports resolve
 
-**Development Status**: ✅ Completed - Project initialized in agent-project/, Python 3.13.7 pinned, .gitignore created, src/ structure ready, uv sync working, imports resolving correctly
+**Development Status**: ✅ Completed - Project initialized in agent-project/, Python 3.13.7 pinned, .gitignore created (fixed: removed src/ from ignore), src/ structure ready, uv sync working, imports resolving correctly
 
 ## v0.2: Core Agent Class
 **What**: Minimal Agent class skeleton  
@@ -34,6 +34,8 @@ Iterative development with minimal increments using Python 3.13.7.
 **What**: Agent can call registered tools  
 **How**: Parse LLM response, execute matching tool  
 **Check**: Tool called correctly, output returned
+
+**Development Status**: ✅ Completed - Agent.run() updated to async, tool schemas included in prompts, regex parsing for call_tool() pattern, JSON argument parsing with fallback, proper error handling. Tests pass: tools executed correctly, parameters parsed properly, error handling functional for nonexistent tools
 
 ## v0.6: DuckDuckGo Search Tool
 **What**: Web search for news articles  
