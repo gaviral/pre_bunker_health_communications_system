@@ -49,6 +49,8 @@ Iterative development with minimal increments using Python 3.13.7.
 **How**: Agent(name, instructions, tools, model) - planner gets articles, writer creates posts  
 **Check**: Agents have distinct roles, tools assignment works
 
+**Development Status**: ✅ Completed - agents.py created with content_planner_agent (has search tool access) and writer_agent (content creation focused). Tests pass: planner can call search tools, writer generates content, distinct roles working correctly
+
 ## v0.8: Agent Orchestration
 **What**: Runner.run_sync coordination  
 **How**: content_planner_response → raw_articles → writer_agent → final_output  
