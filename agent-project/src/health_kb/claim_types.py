@@ -9,6 +9,7 @@ class ClaimType(Enum):
     SAFETY = "safety"      # Side effects and risks
     DOSAGE = "dosage"      # Amount and frequency
     TIMING = "timing"      # When to use treatment
+    IMPLICATION = "implication"  # Implicit claims and assumptions
     COMPARISON = "comparison"  # Comparing treatments
     CAUSATION = "causation"    # What causes what
 
