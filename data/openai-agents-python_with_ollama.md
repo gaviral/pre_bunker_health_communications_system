@@ -69,11 +69,11 @@ Install Ollama. Obtain OpenAI API key.
 ### Step 1: Run your LLM model on Ollama
 
 ```bash
-ollama run qwen2.5:7b  # you can use any model like llama3.2
+ollama run phi4-mini  # you can use any model like llama3.2
 ```
 Help: "How to Install Ollama" post or "Generative AI with Local LLM" chapter.
 
-Requires tool-calling LLM (Llama/Qwen). deepseek-r1 lacks support, causes 400 errors.
+Requires tool-calling LLM (Llama/Qwen/phi4-mini). deepseek-r1 lacks support, causes 400 errors.
 Requires OPENAI_API_KEY for requests/tracing:
 
 ```bash
@@ -119,7 +119,7 @@ Jupyter/Colab: prevents "RuntimeError: event loop running"
 
 ```python
 model = OpenAIChatCompletionsModel( 
-    model="qwen2.5:7b",
+    model="phi4-mini",
     openai_client=AsyncOpenAI(base_url="http://localhost:11434/v1")
 )
 ```
