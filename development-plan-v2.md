@@ -6,6 +6,75 @@
 
 **v2.0 MVP Goal**: Implement the PRE-BUNKER pipeline with 5 core components: Audience Simulator, Claim Extractor, Evidence Gatekeeper, Countermeasure Studio, and Ops Orchestrator.
 
+---
+
+## 🔧 CRITICAL SETUP INFORMATION - READ FIRST
+
+### Environment & Technical Context
+- **Working Directory**: `/Users/aviralgarg/code/agent/agent-project/` for all code execution
+- **Python Version**: 3.13.7 (already pinned with uv)
+- **Package Manager**: Use `uv` for all dependencies: `uv add package-name`
+- **Python Execution**: Always use `uv run python` for script execution
+- **LLM Setup**: 
+  ```bash
+  export OPENAI_API_KEY="sk-dummy-for-local"
+  # Ensure Ollama is running: ollama run phi4-mini
+  ```
+- **Git Status**: Clean history with v1.0 complete, ready for v2.0 implementation
+
+### Critical v1.0 Architecture to Leverage
+- **Agent Pattern**: `async def run(message)` with integrated tracing and error handling
+- **Tool System**: `@function_tool` decorator with automatic schema generation in `src/tools.py`
+- **Error Handling**: Comprehensive logging in `src/error_handler.py` with graceful failures
+- **Orchestration**: Runner class in `src/runner.py` for sync/async coordination
+- **File Structure**: All code in `src/` directory with proper module separation
+
+### Health Domain Critical Requirements
+- **Medical Accuracy**: Absolutist language ("always", "never", "100%", "guaranteed") = HIGH RISK
+- **Authority Sources with Trust Scores**: 
+  - WHO: 0.95 (global health, disease outbreaks, guidelines)
+  - CDC: 0.95 (US health policy, disease surveillance, prevention)  
+  - Cochrane: 0.90 (systematic reviews, evidence synthesis)
+  - FDA: 0.90 (drug approval, medical devices, safety)
+  - PubMed: 0.85 (peer-reviewed research)
+- **Risk Patterns**: Missing evidence, ambiguous terms, emotional appeals, conspiracy theories
+- **Core Persona Types**: Vaccine-hesitant, health-anxious, chronic illness patients, healthcare professionals
+
+### Implementation Success Indicators
+- ✅ Each version adds ONE testable component that works independently
+- ✅ Health claims properly extracted with confidence scores
+- ✅ Different personas generate varied interpretations of same text
+- ✅ Evidence validation links claims to authoritative sources  
+- ✅ Countermeasures address specific persona concerns with appropriate tone
+- ✅ Full pipeline processes health messages end-to-end with human review queue
+
+### Common Pitfalls to Avoid
+- ❌ **Don't** make up medical facts - use the provided simulated evidence database
+- ❌ **Don't** skip testing between versions - each must work before proceeding
+- ❌ **Don't** ignore ultra-minimal token requirement from v1.0 experience
+- ❌ **Don't** reinvent v1.0 components - build on existing Agent/tools/runner infrastructure
+- ✅ **Do** follow exact version sequence (v1.1 → v1.2 → ... → v2.0)
+- ✅ **Do** commit each version with detailed git messages
+- ✅ **Do** make intelligent assumptions when stuck and continue to next version
+
+### Testing Strategy for Each Version
+1. **Unit Test**: Component works in isolation
+2. **Integration Test**: Component works with existing v1.0 infrastructure  
+3. **Health Domain Test**: Handles medical content appropriately
+4. **Error Test**: Fails gracefully with useful error messages
+5. **Commit**: Document what works and any limitations
+
+### Final v2.0 Production Deliverable
+RESTful API that accepts health communication text and returns:
+- **Risk Assessment**: Overall score + breakdown by risk factors
+- **Persona Reactions**: How different audiences interpret the message
+- **Evidence Validation**: Claims matched to trusted sources with confidence
+- **Countermeasures**: Prebunks and clarifications tailored to persona concerns
+- **Review Queue**: Human oversight workflow for high-risk content
+- **Learning System**: Improves scoring based on reviewer feedback
+
+---
+
 ## Development Philosophy for v2.0
 
 ### Ultra-Granular Approach
