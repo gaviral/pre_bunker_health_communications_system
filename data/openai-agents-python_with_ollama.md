@@ -31,9 +31,6 @@ There are many agentic frameworks available today. Let’s take a quick look at 
 For those like me encountering the term “Pydantic-based validation” for the first time:
 
 Pydantic validation is the process of ensuring that input data matches the expected structure, types, and constraints by using Pydantic models. It automates type-checking and data parsing, raising errors when data is invalid.
-As a CrewAI user, I was eager to explore the OpenAI Agents SDK and compare it with CrewAI. The OpenAI Agents SDK offers a low learning curve for agent orchestration, which inspired me to document my experiments in this blog post.
-
-Additionally, I often use local LLMs on my homelab server, making it particularly interesting to integrate the OpenAI Agents SDK with my local LLM. In this post, I will use Ollama for local LLM inference and compare the OpenAI Agents SDK with CrewAI.
 
 Workflow
 As I mentioned before that, the LLM is the core intelligence behind the OpenAI Agents SDK workflow. It powers the agent’s decision-making, natural language understanding, and reasoning abilities. Here’s how it fits into each stage of the workflow:
@@ -90,15 +87,7 @@ jupyter notebook # assume that, you already have the jupyter installed on conda
 ```
 We will use the content generation example from CrewAI in our book and modify it to work with the OpenAI Agent SDK. The entire Python notebook is available here.
 
-Example Use Case:
-
-In our weekly routine, we plan to publish a blog post on how to install and deploy
-
-Apache Ignite, an in-memory database, on Docker and Kubernetes. Our goal is to
-
-provide a detailed, step-by-step tutorial to guide our audience through the process.
-
-To save time, we decided to use OpenAI Agent SDK to generate an outline and a draft of the blog post, which we will later edit and refine.
+ 
 
 Step 3. To get started, open a new notebook and install the necessary packages. Here’s how you can do it:
 
@@ -240,23 +229,7 @@ The writer_agent takes the raw content and crafts a detailed, coherent, and tech
 3. Output:
 
 The final blog post is printed and returned.
-If everything goes as expected, you should get a result similar to the one shown below:
-
-..... trim for saving spaces
-Title: Installing Using DEP and RPM Package | Ignite Documentation
-URL: https://ignite.apache.org/docs/latest/installation/deb-rpm
-Description: If running on Windows 10 WSL or Docker, you should start Apache Ignite as a stand-alone process (not as a service). To start an Ignite node with a custom configuration, run the following command: sudo systemctl start apache-ignite@
-Final article:
-### How to Install Apache Ignite v3 on Docker: A Comprehensive Guide
-Apache Ignite is an in-memory computing platform for enterprise-level applications. This blog post will guide you through the process of installing Apache Ignite version 3 using Docker. We'll cover the necessary steps and configurations to get your Apache Ignite cluster up and running.
-#### Step-by-Step Installation Guide Using Docker
-1. **Ensure Docker is Installed**
-   Before proceeding, make sure Docker is installed on your machine. You can download Docker from the [official website](https://www.docker.com/).
-2. **Pull the Apache Ignite Docker Image**
-   Open a terminal and run the following command to pull the latest version of the Apache Ignite Docker image:
-   ```sh
-   docker pull apacheignite/ignite
-   ```
+ 
 Step 10. Tracing.
 
 The Agents SDK automatically traces agent runs, making it easy to track and debug the behavior of your agents. You can access the tracing information via theOpenAI Dashboard.
@@ -284,11 +257,7 @@ async def main():
     result = await Runner.run(editor_agent, topic)
     print(result.final_output)
 ```
-In summary, while both the OpenAI SDK and CrewAI support multi-agent systems, each has distinct advantages suited for different use cases.
-
-CrewAI offers a more structured, role-based collaboration model. It allows you to explicitly define tasks for agents and assign roles, which is ideal for complex workflows that require clear division of responsibilities. This makes it particularly useful for enterprise-level applications or scenarios that involve multiple agents working on different aspects of a problem.
-On the other hand, OpenAI’s SDK provides a more streamlined and lightweight approach, focusing on ease of integration and scalability. With native OpenAI tool integration, it simplifies the setup process, making it suitable for developers who need a quick and flexible solution for tasks such as natural language processing, content generation, or automated workflows. The OpenAI SDK excels in scenarios where you need to leverage OpenAI’s powerful models with minimal overhead, allowing for faster prototyping and deployment.
-Overall, the choice between CrewAI and OpenAI SDK depends on your project’s complexity and needs. If you require fine-grained control over task delegation and agent collaboration, CrewAI may be the better choice. However, if you’re looking for a simpler, more efficient way to integrate OpenAI mode
+ 
 
  
 
