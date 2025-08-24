@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Results - PRE-BUNKER</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f5f5f5; 
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .result-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        .risk-score {
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .risk-low { background: #d4edda; color: #155724; }
+        .risk-medium { background: #fff3cd; color: #856404; }
+        .risk-high { background: #f8d7da; color: #721c24; }
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .claim, .persona, .countermeasure {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 5px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+        .concern {
+            background: #fff3cd;
+            padding: 5px 10px;
+            margin: 2px;
+            border-radius: 3px;
+            display: inline-block;
+            font-size: 12px;
+        }
+        .evidence-found { color: #28a745; }
+        .evidence-missing { color: #dc3545; }
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #5a6fd8;
+        }
+        .original-message {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .status-indicator {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status-completed { background: #d4edda; color: #155724; }
+        .status-error { background: #f8d7da; color: #721c24; }
+        .ab-testing {
+            background: #e7f3ff;
+            border-left: 4px solid #0066cc;
+        }
+        .variant {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Analysis Results</h1>
+            <p>Analysis ID: {{ result.analysis_id }}</p>
+            <p>Processing Time: {{ "%.2f"|format(result.processing_time) }} seconds</p>
+            <span class="status-indicator status-{{ result.status }}">{{ result.status.title() }}</span>
+        </div>
+
+        <div class="original-message">
+            <h3>Original Message:</h3>
+            <p>{{ result.message }}</p>
+        </div>
+
+        {% if result.status == 'completed' %}
+        <div class="results-grid">
+            <!-- Risk Assessment -->
+            <div class="result-card">
+                <h3>🚨 Risk Assessment</h3>
+                {% set risk_score = result.risk_report.overall_risk_score %}
+                <div class="risk-score {% if risk_score >= 0.7 %}risk-high{% elif risk_score >= 0.4 %}risk-medium{% else %}risk-low{% endif %}">
+                    {{ "%.1%"|format(risk_score) }}
+                </div>
+                <div class="metric">
+                    <span>High Risk Claims:</span>
+                    <span>{{ result.risk_report.high_risk_claim_count }}</span>
+                </div>
+                <div class="metric">
+                    <span>Total Claims:</span>
+                    <span>{{ result.all_claims|length }}</span>
+                </div>
+                <div class="metric">
+                    <span>Recommendations:</span>
+                    <span>{{ result.risk_report.recommendations|length }}</span>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="result-card">
+                <h3>📊 Performance Metrics</h3>
+                <div class="metric">
+                    <span>Claims Detected:</span>
+                    <span>{{ result.explicit_claims|length }} explicit, {{ result.implicit_claims|length }} implicit</span>
+                </div>
+                <div class="metric">
+                    <span>Persona Concerns:</span>
+                    <span>{{ result.persona_interpretations|sum(attribute='potential_misreading')|length }}</span>
+                </div>
+                <div class="metric">
+                    <span>Countermeasures:</span>
+                    <span>{{ result.countermeasures|length }}</span>
+                </div>
+                <div class="metric">
+                    <span>Evidence Coverage:</span>
+                    <span>{{ result.evidence_validations|selectattr('evidence_found')|list|length }}/{{ result.evidence_validations|length }}</span>
+                </div>
+            </div>
+
+            <!-- Claims Analysis -->
+            <div class="result-card full-width">
+                <h3>🔍 Claims Detected</h3>
+                <h4>Explicit Claims ({{ result.explicit_claims|length }}):</h4>
+                {% for claim in result.explicit_claims %}
+                <div class="claim">{{ claim }}</div>
+                {% endfor %}
+                
+                {% if result.implicit_claims %}
+                <h4>Implicit Claims ({{ result.implicit_claims|length }}):</h4>
+                {% for claim in result.implicit_claims %}
+                <div class="claim">{{ claim }}</div>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <!-- Persona Reactions -->
+            <div class="result-card">
+                <h3>👥 Persona Interpretations</h3>
+                {% for persona in result.persona_interpretations %}
+                <div class="persona">
+                    <strong>{{ persona.persona }}:</strong>
+                    {% if persona.potential_misreading %}
+                        {% for concern in persona.potential_misreading %}
+                        <span class="concern">{{ concern }}</span>
+                        {% endfor %}
+                    {% else %}
+                        <span style="color: #28a745;">No concerns identified</span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Evidence Validation -->
+            <div class="result-card">
+                <h3>📚 Evidence Validation</h3>
+                {% for evidence in result.evidence_validations %}
+                <div class="metric">
+                    <span>{{ evidence.claim[:50] }}...</span>
+                    <span class="{% if evidence.evidence_found %}evidence-found{% else %}evidence-missing{% endif %}">
+                        {% if evidence.evidence_found %}✓ Evidence Found{% else %}✗ No Evidence{% endif %}
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Countermeasures -->
+            <div class="result-card full-width">
+                <h3>🛠️ Countermeasures Generated</h3>
+                {% for persona, countermeasure in result.countermeasures.items() %}
+                <div class="countermeasure">
+                    <strong>{{ persona }}:</strong>
+                    {% if countermeasure.text %}
+                        <p>{{ countermeasure.text[:200] }}{% if countermeasure.text|length > 200 %}...{% endif %}</p>
+                        {% if countermeasure.effectiveness_score %}
+                        <small>Effectiveness: {{ "%.1%"|format(countermeasure.effectiveness_score) }}</small>
+                        {% endif %}
+                    {% else %}
+                        <p>{{ countermeasure }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            {% if include_ab_testing and result.ab_test_results %}
+            <!-- A/B Testing Results -->
+            <div class="result-card full-width ab-testing">
+                <h3>🧪 A/B Testing Results</h3>
+                <p><strong>Recommended Variant:</strong> {{ result.ab_test_results.winner }}</p>
+                <p><strong>Improvement:</strong> {{ "%.1%"|format(result.ab_test_results.improvement_achieved * 100) }}</p>
+                
+                {% for variant in result.ab_test_results.variants %}
+                <div class="variant">
+                    <h4>{{ variant.version.title() }} Version:</h4>
+                    <p>{{ variant.text[:300] }}{% if variant.text|length > 300 %}...{% endif %}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Workflow Recommendation -->
+            <div class="result-card full-width">
+                <h3>⚙️ Workflow Recommendation</h3>
+                <div class="metric">
+                    <span>Risk Level:</span>
+                    <span>{{ result.workflow_recommendation.risk_level.replace('_', ' ').title() }}</span>
+                </div>
+                <div class="metric">
+                    <span>Recommended Reviewers:</span>
+                    <span>{{ result.workflow_recommendation.min_reviewers }}</span>
+                </div>
+                <div class="metric">
+                    <span>Estimated Review Time:</span>
+                    <span>{{ result.workflow_recommendation.estimated_review_time }}</span>
+                </div>
+                {% if review_id %}
+                <p><strong>Review ID:</strong> {{ review_id }} (submitted for human review)</p>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <!-- Error Display -->
+        <div class="result-card">
+            <h3>❌ Analysis Error</h3>
+            <p>{{ result.error }}</p>
+        </div>
+        {% endif %}
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="/" class="btn">🏠 Analyze Another Message</a>
+            {% if review_id %}
+            <a href="/ops/detail/{{ review_id }}" class="btn">👁️ View in Review Dashboard</a>
+            {% endif %}
+            <a href="/ops/dashboard" class="btn">🔧 Operations Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
