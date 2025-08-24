@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PRE-BUNKER Health Communications v{{ system_version }}</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f5f5f5; 
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .system-status {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .status-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+        .capability {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 4px 8px;
+            margin: 2px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        .form-section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        textarea, select, input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        .examples {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .example {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .example:hover {
+            background: #e9ecef;
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav-links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ PRE-BUNKER Health Communications System</h1>
+            <p>Advanced AI system for analyzing health messages and preventing misinformation spread</p>
+            <p><strong>Version {{ system_version }}</strong> • Production Ready • Complete Integration</p>
+        </div>
+
+        <div class="system-status">
+            <div class="status-card">
+                <h3>System Capabilities</h3>
+                {% for capability, enabled in capabilities.items() %}
+                    {% if enabled %}
+                        <span class="capability">{{ capability.replace('_', ' ').title() }}</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+            <div class="status-card">
+                <h3>Review Queue Status</h3>
+                <p><strong>{{ queue_stats.pending_review }}</strong> pending reviews</p>
+                <p><strong>{{ queue_stats.approved }}</strong> approved messages</p>
+                <p>Queue Health: <strong>{{ queue_stats.queue_health.title() }}</strong></p>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Analyze Health Communication</h2>
+            <form action="/analyze" method="post">
+                <div class="form-group">
+                    <label for="message">Health Message to Analyze:</label>
+                    <textarea name="message" id="message" placeholder="Enter the health communication message you want to analyze for potential risks and misinformation..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="priority">Priority Level:</label>
+                    <select name="priority" id="priority">
+                        <option value="low">Low Priority</option>
+                        <option value="medium" selected>Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" name="include_ab_testing" id="include_ab_testing">
+                        <label for="include_ab_testing">Include A/B Testing of Message Variants</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" name="submit_for_review" id="submit_for_review" checked>
+                        <label for="submit_for_review">Submit for Human Review</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">🔍 Analyze Message</button>
+            </form>
+        </div>
+
+        <div class="examples">
+            <h3>Example Health Messages</h3>
+            <p>Click any example to automatically fill the form:</p>
+            
+            <div class="example" onclick="fillExample('Vaccines are 100% safe and effective for everyone. No side effects ever occur.')">
+                <strong>High Risk:</strong> "Vaccines are 100% safe and effective for everyone. No side effects ever occur."
+            </div>
+            
+            <div class="example" onclick="fillExample('This natural supplement cures all types of cancer and has been proven by doctors.')">
+                <strong>High Risk:</strong> "This natural supplement cures all types of cancer and has been proven by doctors."
+            </div>
+            
+            <div class="example" onclick="fillExample('Regular exercise and a balanced diet may help reduce the risk of heart disease, according to recent studies.')">
+                <strong>Low Risk:</strong> "Regular exercise and a balanced diet may help reduce the risk of heart disease, according to recent studies."
+            </div>
+            
+            <div class="example" onclick="fillExample('The COVID-19 vaccines have been shown to be safe and effective in large clinical trials, though like all medical interventions, they can have rare side effects.')">
+                <strong>Balanced:</strong> "The COVID-19 vaccines have been shown to be safe and effective in large clinical trials, though like all medical interventions, they can have rare side effects."
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a href="/ops/dashboard">🔧 Operations Dashboard</a>
+            <a href="/api/status">📊 System Status</a>
+            <a href="/api/capabilities">⚙️ Capabilities</a>
+            <a href="/docs">📚 API Documentation</a>
+        </div>
+    </div>
+
+    <script>
+        function fillExample(text) {
+            document.getElementById('message').value = text;
+        }
+    </script>
+</body>
+</html>
