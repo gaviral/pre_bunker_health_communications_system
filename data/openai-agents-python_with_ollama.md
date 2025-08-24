@@ -28,7 +28,6 @@ Before technical details: benefits and framework differences.
 3. Python-native with modern type hints
 
 ## Framework Comparison
-Many agentic frameworks exist. Quick comparison:
 "Pydantic-based validation" definition:
 
 Pydantic validation: ensures input matches expected structure/types/constraints via Pydantic models. Automates type-checking/parsing, raises errors if invalid.
@@ -230,9 +229,10 @@ Enter/click for full image
 
 Enhancements:
 
-- **Error Handling**: Manage no-article cases
+- **Error Handling**: Manage no-article cases, add try/catch blocks, validation
 - **Multi-Agent**: Add editor for grammar/tone
 - **Parallel**: Use async `Runner.run()` for speed
+- **TODO**: Add logging, error dependencies, robust failure handling
 
 Example enhancements in separate files:
 
