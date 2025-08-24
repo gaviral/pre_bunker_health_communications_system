@@ -64,6 +64,12 @@
 4. **Error Test**: Fails gracefully with useful error messages
 5. **Commit**: Document what works and any limitations
 
+**Test Execution Protocol**: All test runs MUST log complete output to files using:
+```bash
+uv run python test_vX_Y.py 2>&1 | tee vX_Y_detailed_log.txt
+```
+This captures both stdout and stderr for comprehensive debugging and audit trails.
+
 ### Final v2.0 Production Deliverable
 RESTful API that accepts health communication text and returns:
 - **Risk Assessment**: Overall score + breakdown by risk factors
