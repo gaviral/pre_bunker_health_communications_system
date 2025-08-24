@@ -79,45 +79,36 @@ Requires OPENAI_API_KEY for requests/tracing:
 ```bash
 export OPENAI_API_KEY="YOUR API KEY GOES HERE"
 ```
-### Step 2: Activate your conda environment
+### Step 2: Setup project environment
 
 ```bash
-conda activate YOUR_ENV
-jupyter notebook # assume that, you already have the jupyter installed on conda
+uv init agent-project
+cd agent-project
+uv python pin 3.13.7
 ```
-Modified CrewAI example for Agent SDK. Full notebook available.
+Modified CrewAI example for Agent SDK.
 
  
 
-### Step 3: Install necessary packages
-
-New notebook, install:
+### Step 3: Install dependencies
 
 ```bash
-!pip install -U openai-agents duckduckgo-search
+uv add openai-agents duckduckgo-search
 ```
 Requires: openai-agents
 
-### Step 4: Import libraries
+### Step 4: Create main.py
 
 ```python
-from agents import Agent, Runner, OpenAIChatCompletionsModel, AsyncOpenAI, OpenAIChatCompletionsModel, function_tool
+# main.py
+from agents import Agent, Runner, OpenAIChatCompletionsModel, AsyncOpenAI, function_tool
 from duckduckgo_search import DDGS
 ```
-#### Optional
 
-```bash
-!pip install nest-asyncio
-```
-```python
-import nest_asyncio
-nest_asyncio.apply()
-```
-Jupyter/Colab: prevents "RuntimeError: event loop running"
-
-### Step 5: Configure the LLM
+### Step 5: Configure LLM in main.py
 
 ```python
+# Add to main.py
 model = OpenAIChatCompletionsModel( 
     model="phi4-mini",
     openai_client=AsyncOpenAI(base_url="http://localhost:11434/v1")
@@ -125,24 +116,22 @@ model = OpenAIChatCompletionsModel(
 ```
 Adjust host/port per config.
 
-### Step 6: Using Function Calling
+### Step 6: Add search function to main.py
 
 DuckDuckGo integration via Function Calling. Fetches 5 articles.
 
 ```python
+# Add to main.py
 @function_tool
 def get_news_articles(topic):
-    print(f"Running DuckDuckGo news search for {topic}...")
-    
-    # DuckDuckGo search
+    print(f"Running DuckDuckGo search for {topic}...")
     ddg_api = DDGS()
-    results = ddg_api.text(f"{topic} ", max_results=5)
+    results = ddg_api.text(f"{topic}", max_results=5)
     if results:
         news_results = "\n\n".join([f"Title: {result['title']}\nURL: {result['href']}\nDescription: {result['body']}" for result in results])
         print(news_results)
         return news_results
-    else:
-        return f"Could not find news results for {topic}."
+    return f"No results for {topic}."
 ```
 **Explanation:**
 
@@ -155,14 +144,13 @@ def get_news_articles(topic):
 - Fetches 5 articles
 - Returns readable format or error
 
-### Step 7: Create the content_planner_agent
-
-Agent: name/instructions/tools for articles.
+### Step 7: Add content planner to main.py
 
 ```python
+# Add to main.py
 content_planner_agent = Agent(
     name="Content Planner",
-    instructions="You are tasked with planning an engaging and informative blog post on {topic}. Your goal is to gather accurate, up-to-date information and structure the content",
+    instructions="Plan engaging blog post on {topic}. Gather accurate, up-to-date info and structure content",
     tools=[get_news_articles],
     model=model
 )
@@ -174,12 +162,13 @@ content_planner_agent = Agent(
 - Fetches news via `get_news_articles`
 - Generates outline with model
 
-### Step 8: Create the writer_agent
+### Step 8: Add writer agent to main.py
 
 ```python
+# Add to main.py
 writer_agent = Agent(
     name="Technical content writer",
-    instructions="You are the technical content writer assigned to create a detailed and factually accurate blog post on: {topic}",
+    instructions="Create detailed, factually accurate blog post on: {topic}",
     model=model
 )
 ```
@@ -188,36 +177,33 @@ writer_agent = Agent(
 - Uses OpenAI model
 - Accepts topic via `{topic}`
 
-### Step 9: Agent workflow
+### Step 9: Add workflow and main execution
 
 ```python
-# Agent workflow
+# Add to main.py
 def openai_agent_workflow(topic):
-    print("Running Agent workflow...")
-    # Step 1: Search and fetch articles by the content_planner_agent agent
+    print("Running workflow...")
+    # Fetch articles
     content_planner_response = Runner.run_sync(
         content_planner_agent,
-        f"Get me the articles about {topic} "
+        f"Get articles about {topic}"
     )
-    
-    # Access the content from Run Result object
     raw_articles = content_planner_response.final_output
     
-    # Step 2: Pass articles to editor for final review
+    # Generate content
     edited_news_response = Runner.run_sync(
         writer_agent,
         raw_articles
     )
-    
-    # Access the content from RunResult object
     edited_article = edited_news_response.final_output
     
     print("Final article:")
     print(edited_article)
-    
     return edited_article
-topic = "Step by step example of installing Apache Ignite v3 on Docker."
-print(openai_agent_workflow(topic))
+
+if __name__ == "__main__":
+    topic = "Installing Apache Ignite v3 on Docker"
+    openai_agent_workflow(topic)
 ```
 `openai_agent_workflow` orchestrates:
 - Fetches via `content_planner_agent`
@@ -229,7 +215,12 @@ print(openai_agent_workflow(topic))
 2. **Refinement**: `writer_agent` crafts detailed post
 3. **Output**: Prints/returns final post
  
-### Step 10: Tracing
+### Step 10: Run the application
+
+```bash
+export OPENAI_API_KEY="YOUR_API_KEY"
+uv run main.py
+```
 
 Auto-traces runs for tracking/debugging. Access: OpenAI Dashboard.
 
@@ -243,21 +234,25 @@ Enhancements:
 - **Multi-Agent**: Add editor for grammar/tone
 - **Parallel**: Use async `Runner.run()` for speed
 
-Example async orchestration:
+Example enhancements in separate files:
 
 ```python
-# An editor agent for grammar and tone improvements.
+# editor.py
 editor_agent = Agent(
     name="Editor Agent",
-    instructions="Proofread the given blog post for grammatical errors and alignment with human language for better readability while maintaining its original meaning.",
+    instructions="Proofread blog post for grammar/readability while maintaining meaning",
     handoffs=[content_planner_agent, writer_agent]
 )
-```
-```python
-# Agent orchestration
+
+# async_main.py
+import asyncio
+
 async def main():
     result = await Runner.run(editor_agent, topic)
     print(result.final_output)
+
+if __name__ == "__main__":
+    asyncio.run(main())
 ```
  
 
