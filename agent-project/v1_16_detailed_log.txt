@@ -1,0 +1,269 @@
+warning: `VIRTUAL_ENV=/Users/aviralgarg/code/idle_runner/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+INFO:src.error_handler:Agent VariantGenerator processing message: 
+        Original message: Vaccines are 100% safe ...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent VariantGenerator completed without tool calls
+INFO:src.error_handler:Agent VariantGenerator processing message: 
+        Create a very conservative, heavily quali...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent VariantGenerator completed without tool calls
+INFO:src.error_handler:Agent VariantGenerator processing message: 
+        Create a simplified, easy-to-understand v...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent VariantGenerator completed without tool calls
+INFO:src.error_handler:Agent ClarityScorer processing message: 
+        Score this health message for clarity (0....
+INFO:openai._base_client:Retrying request to /chat/completions in 0.409085 seconds
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent ClarityScorer completed without tool calls
+INFO:src.error_handler:Agent Persona_SkepticalParent processing message: 
+Read this health message and respond as Skeptical...
+INFO:src.error_handler:Agent Persona_HealthAnxious processing message: 
+Read this health message and respond as HealthAnx...
+INFO:src.error_handler:Agent Persona_TrustingElder processing message: 
+Read this health message and respond as TrustingE...
+INFO:src.error_handler:Agent Persona_BusyProfessional processing message: 
+Read this health message and respond as BusyProfe...
+INFO:src.error_handler:Agent Persona_VaccineHesitant processing message: 
+Read this health message and respond as VaccineHe...
+INFO:src.error_handler:Agent Persona_ChronicIllness processing message: 
+Read this health message and respond as ChronicIl...
+INFO:src.error_handler:Agent Persona_HealthcareProfessional processing message: 
+Read this health message and respond as Healthcar...
+INFO:src.error_handler:Agent Persona_SocialMediaUser processing message: 
+Read this health message and respond as SocialMed...
+INFO:src.error_handler:Agent Persona_NewParent processing message: 
+Read this health message and respond as NewParent...
+INFO:src.error_handler:Agent Persona_ElderlyCaregiver processing message: 
+Read this health message and respond as ElderlyCa...
+INFO:src.error_handler:Agent Persona_FitnessEnthusiast processing message: 
+Read this health message and respond as FitnessEn...
+INFO:src.error_handler:Agent Persona_PregnantWoman processing message: 
+Read this health message and respond as PregnantW...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthAnxious completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_FitnessEnthusiast completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_TrustingElder completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_PregnantWoman completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_ChronicIllness completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_NewParent completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SkepticalParent completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthcareProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_BusyProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_ElderlyCaregiver completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_VaccineHesitant completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SocialMediaUser completed without tool calls
+INFO:src.error_handler:Agent ClarityScorer processing message: 
+        Score this health message for clarity (0....
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent ClarityScorer completed without tool calls
+INFO:src.error_handler:Agent VariantGenerator processing message: 
+        Original message: New treatment is very e...
+INFO:openai._base_client:Retrying request to /chat/completions in 0.433319 seconds
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent VariantGenerator completed without tool calls
+INFO:src.error_handler:Agent VariantGenerator processing message: 
+        Create a very conservative, heavily quali...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent VariantGenerator completed without tool calls
+INFO:src.error_handler:Agent VariantGenerator processing message: 
+        Create a simplified, easy-to-understand v...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent VariantGenerator completed without tool calls
+INFO:src.error_handler:Agent ClarityScorer processing message: 
+        Score this health message for clarity (0....
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent ClarityScorer completed without tool calls
+INFO:src.error_handler:Agent ClarityScorer processing message: 
+        Score this health message for clarity (0....
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent ClarityScorer completed without tool calls
+INFO:src.error_handler:Agent Persona_SkepticalParent processing message: 
+Read this health message and respond as Skeptical...
+INFO:src.error_handler:Agent Persona_HealthAnxious processing message: 
+Read this health message and respond as HealthAnx...
+INFO:src.error_handler:Agent Persona_TrustingElder processing message: 
+Read this health message and respond as TrustingE...
+INFO:src.error_handler:Agent Persona_BusyProfessional processing message: 
+Read this health message and respond as BusyProfe...
+INFO:src.error_handler:Agent Persona_VaccineHesitant processing message: 
+Read this health message and respond as VaccineHe...
+INFO:src.error_handler:Agent Persona_ChronicIllness processing message: 
+Read this health message and respond as ChronicIl...
+INFO:src.error_handler:Agent Persona_HealthcareProfessional processing message: 
+Read this health message and respond as Healthcar...
+INFO:src.error_handler:Agent Persona_SocialMediaUser processing message: 
+Read this health message and respond as SocialMed...
+INFO:src.error_handler:Agent Persona_NewParent processing message: 
+Read this health message and respond as NewParent...
+INFO:src.error_handler:Agent Persona_ElderlyCaregiver processing message: 
+Read this health message and respond as ElderlyCa...
+INFO:src.error_handler:Agent Persona_FitnessEnthusiast processing message: 
+Read this health message and respond as FitnessEn...
+INFO:src.error_handler:Agent Persona_PregnantWoman processing message: 
+Read this health message and respond as PregnantW...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_FitnessEnthusiast completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthAnxious completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_TrustingElder completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_VaccineHesitant completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_NewParent completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthcareProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_PregnantWoman completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_BusyProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SkepticalParent completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SocialMediaUser completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_ElderlyCaregiver completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_ChronicIllness completed without tool calls
+INFO:src.error_handler:Agent ClarityScorer processing message: 
+        Score this health message for clarity (0....
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent ClarityScorer completed without tool calls
+INFO:src.error_handler:Agent Persona_SkepticalParent processing message: 
+Read this health message and respond as Skeptical...
+INFO:src.error_handler:Agent Persona_HealthAnxious processing message: 
+Read this health message and respond as HealthAnx...
+INFO:src.error_handler:Agent Persona_TrustingElder processing message: 
+Read this health message and respond as TrustingE...
+INFO:src.error_handler:Agent Persona_BusyProfessional processing message: 
+Read this health message and respond as BusyProfe...
+INFO:src.error_handler:Agent Persona_VaccineHesitant processing message: 
+Read this health message and respond as VaccineHe...
+INFO:src.error_handler:Agent Persona_ChronicIllness processing message: 
+Read this health message and respond as ChronicIl...
+INFO:src.error_handler:Agent Persona_HealthcareProfessional processing message: 
+Read this health message and respond as Healthcar...
+INFO:src.error_handler:Agent Persona_SocialMediaUser processing message: 
+Read this health message and respond as SocialMed...
+INFO:src.error_handler:Agent Persona_NewParent processing message: 
+Read this health message and respond as NewParent...
+INFO:src.error_handler:Agent Persona_ElderlyCaregiver processing message: 
+Read this health message and respond as ElderlyCa...
+INFO:src.error_handler:Agent Persona_FitnessEnthusiast processing message: 
+Read this health message and respond as FitnessEn...
+INFO:src.error_handler:Agent Persona_PregnantWoman processing message: 
+Read this health message and respond as PregnantW...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_FitnessEnthusiast completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_VaccineHesitant completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthAnxious completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SocialMediaUser completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_PregnantWoman completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_BusyProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthcareProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SkepticalParent completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_ElderlyCaregiver completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_ChronicIllness completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_NewParent completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_TrustingElder completed without tool calls
+INFO:src.error_handler:Agent ClarityScorer processing message: 
+        Score this health message for clarity (0....
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent ClarityScorer completed without tool calls
+=== Testing Message Variant Generator Initialization ===
+✅ Variant generator initialized: VariantGenerator
+
+=== Testing A/B Test Simulator Initialization ===
+✅ A/B simulator initialized with persona interpreter and clarity agent
+
+=== Testing Readability Scoring ===
+Case 1: Score = 0.90 (expected: 0.7-1.0)
+  Text: Vaccines are safe. They protect you from disease. ...
+Case 2: Score = 0.42 (expected: 0.3-0.7)
+  Text: Vaccination provides immunological protection agai...
+Case 3: Score = 0.22 (expected: 0.0-0.5)
+  Text: The pharmacokinetic characteristics of the immunob...
+✅ Readability scoring working correctly
+
+=== Testing Overall Score Calculation ===
+Case 1: Score = 0.83 (concerns=2, clarity=0.9, readability=0.8)
+Case 2: Score = 0.55 (concerns=5, clarity=0.6, readability=0.6)
+Case 3: Score = 0.17 (concerns=10, clarity=0.3, readability=0.4)
+✅ Overall score calculation working correctly
+
+=== Testing Variant Comparison ===
+Comparison Report:
+  Best variant: prebunked
+  Rankings: [('prebunked', 0.7), ('conservative', 0.6), ('original', 0.4)]
+  Recommendations: 0
+✅ Variant comparison working correctly
+
+=== Testing Improvement Calculation ===
+Case 1: Improvement = 0.3 (expected: 0.3)
+Case 2: Improvement = 0.0 (expected: 0.0)
+Case 3: Improvement = 0.0 (expected: 0.0)
+✅ Improvement calculation working correctly
+
+=== Testing Variant Generation ===
+Generated 4 variants:
+  original: Vaccines are 100% safe and effective for everyone...
+  prebunked: "Vaccines are generally considered safe and effective for mo...
+  conservative: 1. **Cautious Conservative Version**:
+
+Vaccinations can sign...
+  simplified: "Vaccines work great at keeping you healthy. They're super g...
+✅ Variant generation working
+
+=== Testing Variant Testing ===
+Tested 2 variants:
+
+original:
+  Total concerns: 0
+  Clarity score: 0.8
+  Readability score: 0.8
+  Overall score: 0.9
+  Message length: 36
+  Word count: 6
+
+improved:
+  Total concerns: 46
+  Clarity score: 0.8153846153846154
+  Readability score: 0.8153846153846154
+  Overall score: 0.41
+  Message length: 87
+  Word count: 13
+✅ Variant testing working
+
+=== Testing Complete A/B Testing Framework ===
+A/B Test Results:
+  Original message: New treatment is very effective...
+  Variants generated: 4
+  Winner: prebunked
+  Improvement achieved: 0.01
+  Recommendations: 0
+✅ Complete A/B testing framework working
+
+✅ v1.16 A/B Testing Framework - Message variant generation, testing, and comparison
