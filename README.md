@@ -94,6 +94,35 @@ Instead of accidentally spreading a message that could damage trust, the health 
 
 **This is PRE-BUNKING in action** - catching and fixing communication problems before they reach the public.
 
+### 📊 **Visual Pipeline Flow**
+
+Here's the complete process in one diagram, using our real COVID vaccine example:
+
+```mermaid
+graph TD
+    A["📝 INPUT MESSAGE<br/>The new COVID-19 vaccine is 100% safe<br/>and completely effective for everyone.<br/>It has no side effects and prevents<br/>all infections guaranteed."] --> B["🔍 STEP 1: SMART DETECTION<br/>🚨 2 health claims found<br/>🚩 Dangerous words detected:<br/>• '100% safe'<br/>• 'completely effective'<br/>• 'guaranteed'<br/>• 'no side effects'<br/>📊 Risk Assessment: HIGH RISK"]
+    
+    B --> C["🎭 STEP 2: AUDIENCE SIMULATION<br/>Testing with 4 personas:<br/>😟 Vaccine-Hesitant: 'Sounds too good to be true'<br/>🏥 Healthcare Professional: 'Undermines credibility'<br/>📱 Social Media User: 'Friends will call this propaganda'<br/>👵 Elderly Caregiver: 'Guaranteed makes me suspicious'<br/>⚠️ ALL personas show concerns"]
+    
+    C --> D["📚 STEP 3: EVIDENCE CHECK<br/>Searching trusted sources:<br/>🌍 WHO: Global vaccine data<br/>🇺🇸 CDC: US safety monitoring<br/>📖 Cochrane: Systematic reviews<br/>💊 FDA: Clinical trial data<br/>🔬 PubMed: Peer-reviewed research<br/>❌ Claims don't match evidence<br/>✅ Real data: 85-95% efficacy, rare side effects"]
+    
+    D --> E["🛡️ STEP 4: SMART FIXES<br/>Generated 2 improved versions:<br/>📝 Version A: 'Clinical trials show<br/>the COVID-19 vaccine is highly effective<br/>(85-95%) with rare, manageable side effects.'<br/>📝 Version B: 'The COVID-19 vaccine provides<br/>strong protection for most people.<br/>Individual results may vary.'<br/>✅ Maintains message while building trust"]
+    
+    E --> F["📊 STEP 5: FINAL REPORT<br/>🔴 Risk Assessment: HIGH RISK<br/>📊 Claims: 2 total, 2 high-risk<br/>🎭 Personas: 4 analyzed (all concerned)<br/>📚 Evidence: Claims contradict data<br/>🛡️ Countermeasures: 2 safer versions<br/>⏱️ Analysis completed in 12 minutes<br/>✅ READY FOR HUMAN REVIEW"]
+    
+    F --> G["🎯 FINAL RESULT<br/>Health agency gets:<br/>⚠️ Clear warning about risks<br/>👥 Audience reaction insights<br/>📝 Better alternatives<br/>📚 Evidence-backed recommendations<br/>🚫 PREVENTS TRUST DAMAGE"]
+
+    classDef inputBox fill:#ffebee,stroke:#d32f2f,stroke-width:2px,color:#000
+    classDef processBox fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    classDef warningBox fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    classDef successBox fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#000
+    
+    class A inputBox
+    class B,C,D,E processBox
+    class F warningBox
+    class G successBox
+```
+
 ---
 
 ## Going Deeper: Complete Feature Breakdown
