@@ -1,0 +1,244 @@
+INFO:src.error_handler:Agent EvidenceValidator processing message: 
+Claim to validate: "The new COVID-19 vaccine is 1...
+INFO:src.error_handler:Agent Persona_SkepticalParent processing message: 
+Read this health message and respond as Skeptical...
+INFO:src.error_handler:Agent Persona_HealthAnxious processing message: 
+Read this health message and respond as HealthAnx...
+INFO:src.error_handler:Agent Persona_TrustingElder processing message: 
+Read this health message and respond as TrustingE...
+INFO:src.error_handler:Agent Persona_BusyProfessional processing message: 
+Read this health message and respond as BusyProfe...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthAnxious completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_TrustingElder completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent EvidenceValidator completed without tool calls
+INFO:src.error_handler:Agent EvidenceValidator processing message: 
+Claim to validate: "It has no side effects and pr...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_BusyProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SkepticalParent completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent EvidenceValidator completed without tool calls
+INFO:src.error_handler:Agent PrebunkGenerator processing message: 
+        Original claim: "The new COVID-19 vaccine...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent PrebunkGenerator completed without tool calls
+INFO:src.error_handler:Agent PrebunkGenerator processing message: 
+        Original claim: "It has no side effects a...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent PrebunkGenerator completed without tool calls
+INFO:src.error_handler:Agent EvidenceValidator processing message: 
+Claim to validate: "This natural herb cures cance...
+INFO:src.error_handler:Agent Persona_SkepticalParent processing message: 
+Read this health message and respond as Skeptical...
+INFO:src.error_handler:Agent Persona_HealthAnxious processing message: 
+Read this health message and respond as HealthAnx...
+INFO:src.error_handler:Agent Persona_TrustingElder processing message: 
+Read this health message and respond as TrustingE...
+INFO:src.error_handler:Agent Persona_BusyProfessional processing message: 
+Read this health message and respond as BusyProfe...
+INFO:openai._base_client:Retrying request to /chat/completions in 0.444076 seconds
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_TrustingElder completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SkepticalParent completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_BusyProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthAnxious completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent EvidenceValidator completed without tool calls
+INFO:src.error_handler:Agent PrebunkGenerator processing message: 
+        Original claim: "This natural herb cures ...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent PrebunkGenerator completed without tool calls
+INFO:src.error_handler:Agent EvidenceValidator processing message: 
+Claim to validate: "COVID-19 vaccines are effecti...
+INFO:src.error_handler:Agent Persona_SkepticalParent processing message: 
+Read this health message and respond as Skeptical...
+INFO:src.error_handler:Agent Persona_HealthAnxious processing message: 
+Read this health message and respond as HealthAnx...
+INFO:src.error_handler:Agent Persona_TrustingElder processing message: 
+Read this health message and respond as TrustingE...
+INFO:src.error_handler:Agent Persona_BusyProfessional processing message: 
+Read this health message and respond as BusyProfe...
+INFO:openai._base_client:Retrying request to /chat/completions in 0.402451 seconds
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_TrustingElder completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SkepticalParent completed without tool calls
+INFO:openai._base_client:Retrying request to /chat/completions in 0.386694 seconds
+INFO:openai._base_client:Retrying request to /chat/completions in 0.415181 seconds
+INFO:openai._base_client:Retrying request to /chat/completions in 0.785878 seconds
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthAnxious completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_BusyProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent EvidenceValidator completed without tool calls
+INFO:src.error_handler:Agent PrebunkGenerator processing message: 
+        Original claim: "COVID-19 vaccines are ef...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent PrebunkGenerator completed without tool calls
+INFO:src.error_handler:Agent Persona_SkepticalParent processing message: 
+Read this health message and respond as Skeptical...
+INFO:src.error_handler:Agent Persona_HealthAnxious processing message: 
+Read this health message and respond as HealthAnx...
+INFO:src.error_handler:Agent Persona_TrustingElder processing message: 
+Read this health message and respond as TrustingE...
+INFO:src.error_handler:Agent Persona_BusyProfessional processing message: 
+Read this health message and respond as BusyProfe...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SkepticalParent completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthAnxious completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_TrustingElder completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_BusyProfessional completed without tool calls
+INFO:src.error_handler:Agent EvidenceValidator processing message: 
+Claim to validate: "COVID-19 vaccines are effecti...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent EvidenceValidator completed without tool calls
+INFO:src.error_handler:Agent PrebunkGenerator processing message: 
+        Original claim: "COVID-19 vaccines are ef...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent PrebunkGenerator completed without tool calls
+INFO:src.error_handler:Agent EvidenceValidator processing message: 
+Claim to validate: "Clinical trials demonstrate 8...
+INFO:src.error_handler:Agent Persona_SkepticalParent processing message: 
+Read this health message and respond as Skeptical...
+INFO:src.error_handler:Agent Persona_HealthAnxious processing message: 
+Read this health message and respond as HealthAnx...
+INFO:src.error_handler:Agent Persona_TrustingElder processing message: 
+Read this health message and respond as TrustingE...
+INFO:src.error_handler:Agent Persona_BusyProfessional processing message: 
+Read this health message and respond as BusyProfe...
+INFO:openai._base_client:Retrying request to /chat/completions in 0.428269 seconds
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthAnxious completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_TrustingElder completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_BusyProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SkepticalParent completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent EvidenceValidator completed without tool calls
+INFO:src.error_handler:Agent EvidenceValidator processing message: 
+Claim to validate: "The vaccine is approved by FD...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent EvidenceValidator completed without tool calls
+INFO:src.error_handler:Agent EvidenceValidator processing message: 
+Claim to validate: "New research from WHO shows t...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent EvidenceValidator completed without tool calls
+INFO:src.error_handler:Agent PrebunkGenerator processing message: 
+        Original claim: "The vaccine is approved ...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent PrebunkGenerator completed without tool calls
+INFO:src.error_handler:Agent PrebunkGenerator processing message: 
+        Original claim: "New research from WHO sh...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent PrebunkGenerator completed without tool calls
+=== Testing Pipeline Initialization ===
+✅ Pipeline initialized with 4 personas
+✅ Configuration: {'max_claims_to_process': 10, 'min_risk_score_for_countermeasures': 0.3, 'parallel_processing': True, 'include_countermeasures': True, 'detailed_logging': True}
+
+=== Testing Risk Categorization ===
+Risk score 0.8 → high (expected: high)
+Risk score 0.5 → medium (expected: medium)
+Risk score 0.2 → low (expected: low)
+Risk score 0.0 → low (expected: low)
+✅ Risk categorization working correctly
+
+=== Testing Pipeline Configuration ===
+✅ Default configuration: {'max_claims_to_process': 10, 'min_risk_score_for_countermeasures': 0.3, 'parallel_processing': True, 'include_countermeasures': True, 'detailed_logging': True}
+✅ Custom configuration ready for override
+
+=== Testing Basic Pipeline Processing ===
+Processing message: The new COVID-19 vaccine is 100% safe and completely effective for everyone.
+    It has no side effects and prevents all infections guaranteed.
+[Pipeline] Step 1: Extracting claims from message...
+[Pipeline] Step 2: Analyzing risk for 2 claims...
+[Pipeline] Step 3: Getting persona interpretations...
+[Pipeline] Step 4: Validating evidence...
+[Pipeline] Step 5: Generating countermeasures...
+[Pipeline] Step 6: Compiling risk report...
+
+Pipeline Status: completed_success
+Processing Time: 747.64 seconds
+Claims Found: 2
+Risk Analysis Complete: True
+Persona Interpretations: 4
+Evidence Validations: 2
+Countermeasures: 2
+
+Pipeline Summary:
+🔴 Risk Assessment: High Risk
+📊 Claims: 2 total, 2 high-risk
+🎭 Personas: 4 analyzed
+📚 Evidence: 2 claims validated
+🛡️ Countermeasures: 2 generated
+⏱️ Processed in 747.64 seconds
+
+=== Testing No Claims Message ===
+Processing non-medical message: The weather is beautiful today. I love spending time outdoors.
+Status: completed_no_claims
+Claims: 0
+Summary: ✅ No health claims detected in message (processed in 0.00s)
+
+=== Testing High-Risk Message ===
+Processing high-risk message...
+[Pipeline] Step 1: Extracting claims from message...
+[Pipeline] Step 2: Analyzing risk for 1 claims...
+[Pipeline] Step 3: Getting persona interpretations...
+[Pipeline] Step 4: Validating evidence...
+[Pipeline] Step 5: Generating countermeasures...
+[Pipeline] Step 6: Compiling risk report...
+Overall Risk Assessment: high_risk
+High-Risk Claims: 1
+Key Findings: ['Found 1 high-risk claims requiring immediate attention']
+Recommendations: 3
+
+=== Testing Sequential vs Parallel Processing ===
+Parallel processing: 849.48s
+Sequential processing: 541.30s
+✅ Both processing modes working
+
+=== Testing Error Handling ===
+[Pipeline] Step 1: Extracting claims from message...
+[Pipeline] Error: 'NoneType' object has no attribute 'lower'
+✅ Error handled gracefully: 'NoneType' object has no attribute 'lower'
+
+=== Testing Comprehensive Message ===
+Processing comprehensive message...
+[Pipeline] Step 1: Extracting claims from message...
+[Pipeline] Step 2: Analyzing risk for 3 claims...
+[Pipeline] Step 3: Getting persona interpretations...
+[Pipeline] Step 4: Validating evidence...
+[Pipeline] Step 5: Generating countermeasures...
+[Pipeline] Step 6: Compiling risk report...
+
+Comprehensive Analysis Results:
+Status: completed_success
+Claims: 3
+Risk Level: low_risk
+
+Claims found:
+  1. Clinical trials demonstrate 85% efficacy in preventing sever... (risk: 0.50)
+  2. The vaccine is approved by FDA and recommended by CDC for ro... (risk: 0.60)
+  3. New research from WHO shows that the RSV vaccine is highly e... (risk: 0.60)
+
+Final Summary:
+🟢 Risk Assessment: Low Risk
+📊 Claims: 3 total, 0 high-risk
+🎭 Personas: 4 analyzed
+📚 Evidence: 3 claims validated
+🛡️ Countermeasures: 2 generated
+⏱️ Processed in 700.46 seconds
+
+✅ v1.9 Integration Pipeline - Working with end-to-end health message processing
