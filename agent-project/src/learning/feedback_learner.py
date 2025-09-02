@@ -2,8 +2,6 @@
 
 from datetime import datetime
 from typing import Dict, List, Any, Optional
-import statistics
-import json
 
 class FeedbackLearner:
     """Learn from reviewer feedback to improve risk scoring"""

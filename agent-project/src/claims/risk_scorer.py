@@ -3,7 +3,6 @@
 import re
 from typing import Dict, List, Tuple
 from src.health_kb.claim_types import HealthClaim, ClaimType
-from src.health_kb.medical_terms import MEDICAL_ENTITIES
 
 class RiskScorer:
     def __init__(self):
