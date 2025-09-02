@@ -1,0 +1,54 @@
+=== TEST RUN: test_v1_1.py ===
+Timestamp: 2025-08-26T09:02:20-07:00
+Command: python3 test_v1_1.py
+
+INFO:__main__:[SCOPE_ANALYSIS] Feature coverage: 5/15 planned entities implemented (33.3%)
+WARNING:__main__:[VALIDATION_MISSING] No negative test cases for claim extraction
+INFO:__main__:[EDGE_CASES] 0 edge case scenarios tested (Target: >5)
+INFO:__main__:[PERFORMANCE_BASELINE] Medical terms processing time: 0.000s
+INFO:__main__:[SCOPE_ANALYSIS] Claim type coverage: 4/15 types implemented (26.7%)
+INFO:__main__:[RISK_VALIDATION] Average risk score: 0.550, Range: 0.300-0.900
+INFO:__main__:[CLAIM_DISTRIBUTION] Types tested: {<ClaimType.EFFICACY: 'efficacy'>: 2, <ClaimType.SAFETY: 'safety'>: 1, <ClaimType.DOSAGE: 'dosage'>: 1}
+WARNING:__main__:[VALIDATION_MISSING] No threshold validation for risk scores
+WARNING:__main__:[VALIDATION_MISSING] No complex claim interaction testing
+INFO:__main__:[PERFORMANCE_BASELINE] Claim classification processing time: 0.002s
+=== Testing Medical Terms ===
+Text: COVID-19 vaccines are safe and effective
+  Medical: True
+  Entities: {'conditions': ['COVID-19']}
+
+Text: Naloxone can reverse opioid overdoses
+  Medical: True
+  Entities: {'conditions': ['naloxone']}
+
+Text: The weather is nice today
+  Medical: False
+  Entities: {}
+
+Text: WHO recommends vaccination for everyone
+  Medical: True
+  Entities: {'treatments': ['vaccination'], 'organizations': ['WHO']}
+
+=== Testing Claim Types ===
+Claim: Vaccines are 100% effective against disease
+  Type: ClaimType.EFFICACY
+  Absolutist: True
+  Risk Score: 0.90
+
+Claim: This medication causes serious side effects
+  Type: ClaimType.SAFETY
+  Absolutist: False
+  Risk Score: 0.50
+
+Claim: Take 2 tablets daily with food
+  Type: ClaimType.DOSAGE
+  Absolutist: False
+  Risk Score: 0.30
+
+Claim: Exercise prevents heart disease
+  Type: ClaimType.EFFICACY
+  Absolutist: False
+  Risk Score: 0.50
+
+✅ v1.1 Health Domain Setup - Basic functionality working
+Return Code: 0

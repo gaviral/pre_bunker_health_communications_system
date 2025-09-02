@@ -1,0 +1,17 @@
+=== TEST RUN: test_v1_2.py ===
+Timestamp: 2025-08-26T09:00:23.286658
+Return Code: 1
+
+=== STDOUT ===
+
+=== STDERR ===
+Traceback (most recent call last):
+  File "/Users/aviralgarg/code/agent/agent-project/test_v1_2.py", line 12, in <module>
+    from src.claims.extractor import ClaimExtractor, claim_extractor
+  File "/Users/aviralgarg/code/agent/agent-project/src/claims/extractor.py", line 6, in <module>
+    from src.agent import Agent, model
+  File "/Users/aviralgarg/code/agent/agent-project/src/agent.py", line 1, in <module>
+    from openai import AsyncOpenAI
+ModuleNotFoundError: No module named 'openai'
+
+=== END ===
