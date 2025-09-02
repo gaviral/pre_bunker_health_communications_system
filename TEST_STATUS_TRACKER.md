@@ -5,6 +5,8 @@
 | Test ID | Test Name | Status | Started | Duration | Result File | Notes |
 |---------|-----------|--------|---------|----------|-------------|--------|
 | test_v2_0 | Test V2 0 | 🔵 Running | 2025-09-02T14:53:29-07:00 |  | async_test_logs/test_v2_0_20250902_145329.log | - |
+| test_v1_7 | Test V1 7 | 🔵 Running | 2025-09-02T15:14:41-07:00 |  | async_test_logs/test_v1_7_20250902_151441.log | - |
+| test_v1_9 | Test V1 9 | ❌ Failed | 2025-09-02T15:14:48-07:00 | 1s | async_test_logs/test_v1_9_20250902_151447.log | - |
 
 ## Status Legend
 - ⚪ **Ready**: Not started
@@ -26,6 +28,6 @@
 *Summary of last 5 completed tests will appear here*
 
 ---
-**Last Updated**: 2025-09-02 14:53:29
+**Last Updated**: 2025-09-02 15:14:48
 **Total Tests Run**: 0
 **Success Rate**: N/A
