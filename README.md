@@ -82,7 +82,7 @@ Imagine a public health agency wants to share this message:
 🎭 Personas: 4 analyzed (all showed concerns)
 📚 Evidence: Claims don't match scientific data
 🛡️ Countermeasures: 2 safer versions generated
-⏱️ Analysis completed in 12 minutes
+⏱️ Analysis completed in 12.5 minutes
 ```
 
 ### 🎯 **The Result**
@@ -108,7 +108,7 @@ graph TD
     
     D --> E["🛡️ STEP 4: SMART FIXES<br/>Generated 2 improved versions:<br/>📝 Version A: 'Clinical trials show<br/>the COVID-19 vaccine is highly effective<br/>(85-95%) with rare, manageable side effects.'<br/>📝 Version B: 'The COVID-19 vaccine provides<br/>strong protection for most people.<br/>Individual results may vary.'<br/>✅ Maintains message while building trust"]
     
-    E --> F["📊 STEP 5: FINAL REPORT<br/>🔴 Risk Assessment: HIGH RISK<br/>📊 Claims: 2 total, 2 high-risk<br/>🎭 Personas: 4 analyzed (all concerned)<br/>📚 Evidence: Claims contradict data<br/>🛡️ Countermeasures: 2 safer versions<br/>⏱️ Analysis completed in 12 minutes<br/>✅ READY FOR HUMAN REVIEW"]
+    E --> F["📊 STEP 5: FINAL REPORT<br/>🔴 Risk Assessment: HIGH RISK<br/>📊 Claims: 2 total, 2 high-risk<br/>🎭 Personas: 4 analyzed (all concerned)<br/>📚 Evidence: Claims contradict data<br/>🛡️ Countermeasures: 2 safer versions<br/>⏱️ Analysis completed in 12.5 minutes<br/>✅ READY FOR HUMAN REVIEW"]
     
     F --> G["🎯 FINAL RESULT<br/>Health agency gets:<br/>⚠️ Clear warning about risks<br/>👥 Audience reaction insights<br/>📝 Better alternatives<br/>📚 Evidence-backed recommendations<br/>🚫 PREVENTS TRUST DAMAGE"]
 
@@ -149,20 +149,20 @@ Here's everything our system can do, what's working perfectly, what has issues, 
 
 #### ✅ **Working Personas** (12 total)
 **Standard Personas (4):**
-- **Skeptical Parent**: Questions everything, wants proof
-- **Health-Anxious**: Worries about side effects and risks  
-- **Trusting Elder**: Generally trusts medical authorities
-- **Busy Professional**: Wants quick, actionable information
+- **SkepticalParent**: Questions everything, wants proof
+- **HealthAnxious**: Worries about side effects and risks  
+- **TrustingElder**: Generally trusts medical authorities
+- **BusyProfessional**: Wants quick, actionable information
 
 **Health-Specific Personas (8):**
-- **Vaccine-Hesitant**: Prefers natural immunity, distrusts pharmaceutical industry
-- **Chronic Illness Patient**: Expert in their condition, concerned about interactions
-- **Healthcare Professional**: Evidence-based, liability-conscious
-- **Social Media User**: Influenced by peers, shares trending content
-- **New Parent**: Child safety priority, researches everything
-- **Elderly Caregiver**: Manages multiple health conditions
-- **Fitness Enthusiast**: Focused on performance and natural health
-- **Pregnant Woman**: Extremely cautious about any interventions
+- **VaccineHesitant**: Prefers natural immunity, distrusts pharmaceutical industry
+- **ChronicIllness**: Expert in their condition, concerned about interactions
+- **HealthcareProfessional**: Evidence-based, liability-conscious
+- **SocialMediaUser**: Influenced by peers, shares trending content
+- **NewParent**: Child safety priority, researches everything
+- **ElderlyCaregiver**: Manages multiple health conditions
+- **FitnessEnthusiast**: Focused on performance and natural health
+- **PregnantWoman**: Extremely cautious about any interventions
 
 #### ✅ **Persona Capabilities**
 - **Realistic Reactions**: Generates authentic responses based on persona characteristics
@@ -180,7 +180,7 @@ Here's everything our system can do, what's working perfectly, what has issues, 
 - **CDC (Centers for Disease Control)**: Authority score 0.95, US health policy
 - **Cochrane**: Authority score 0.90, systematic reviews
 - **FDA (Food & Drug Administration)**: Authority score 0.90, drug approvals
-- **PubMed**: Authority score 0.85, peer-reviewed research
+- **PubMed/NIH**: Authority score 0.85, peer-reviewed research
 
 #### ✅ **Working Validation Features**
 - **Source Matching**: Links health claims to relevant authoritative sources
@@ -296,7 +296,7 @@ Here's everything our system can do, what's working perfectly, what has issues, 
 ### ⚡ **Performance & Integration Status**
 
 #### ❌ **Major Performance Issues**
-- **Extremely Slow Processing**: 12-14 minutes per message (should be <30 seconds)
+- **Extremely Slow Processing**: 9-14 minutes per message (should be <30 seconds)
 - **Connection Timeouts**: Frequent failures when processing multiple personas
 - **Memory Usage**: Potential memory leaks during long processing sessions
 
