@@ -285,6 +285,32 @@ Analyze how the context might change the meaning or impact of health claims.""",
         # Higher ratio of implicit to explicit indicates more complex messaging
         complexity_ratio = (implicit_count + pattern_count * 0.5) / explicit_count
         return min(1.0, complexity_ratio)
+    
+    async def extract_claims(self, text: str, options: Dict[str, Any] = None) -> Dict[str, Any]:
+        """Extract both explicit and implicit claims from text"""
+        # Get explicit claims from parent class
+        explicit_claims = await self.extract_health_claims(text)
+        
+        # Get implicit claims
+        implicit_claims = await self._extract_implicit_claims(text)
+        
+        # Get context analysis
+        context_analysis = await self._analyze_context(text)
+        
+        # Get pattern implications
+        pattern_implications = self._detect_implicit_patterns(text)
+        
+        return {
+            'explicit_claims': explicit_claims,
+            'implicit_claims': implicit_claims,
+            'pattern_implications': pattern_implications,
+            'context_analysis': context_analysis,
+            'complexity_score': self.get_claim_complexity_score({
+                'explicit_claims': [explicit_claims] if explicit_claims else [],
+                'implicit_claims': implicit_claims,
+                'pattern_implications': pattern_implications
+            })
+        }
 
 # Global instance
 advanced_claim_extractor = AdvancedClaimExtractor()

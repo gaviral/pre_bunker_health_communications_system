@@ -1,0 +1,122 @@
+INFO:src.error_handler:Agent VaccineHesitantCountermeasures processing message: 
+                Original claim: Vaccines are 100%...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent VaccineHesitantCountermeasures completed without tool calls
+INFO:src.error_handler:Agent AnxietyCountermeasures processing message: 
+                Original claim: Vaccines are 100%...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent AnxietyCountermeasures completed without tool calls
+INFO:src.error_handler:Agent VaccineHesitantCountermeasures processing message: 
+                Original claim: Natural immunity ...
+INFO:openai._base_client:Retrying request to /chat/completions in 0.421437 seconds
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent VaccineHesitantCountermeasures completed without tool calls
+INFO:src.error_handler:Agent AnxietyCountermeasures processing message: 
+                Original claim: Natural immunity ...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent AnxietyCountermeasures completed without tool calls
+INFO:src.error_handler:Agent ParentCountermeasures processing message: 
+                Original claim: Side effects are ...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent ParentCountermeasures completed without tool calls
+INFO:src.error_handler:Agent ChronicIllnessCountermeasures processing message: 
+                Original claim: Side effects are ...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent ChronicIllnessCountermeasures completed without tool calls
+=== Testing Persona-Targeted Generator Initialization ===
+✅ VaccineHesitant generator: VaccineHesitantCountermeasures
+✅ HealthAnxious generator: AnxietyCountermeasures
+✅ SocialMediaUser generator: SocialMediaCountermeasures
+✅ ChronicIllness generator: ChronicIllnessCountermeasures
+✅ SkepticalParent generator: ParentCountermeasures
+✅ HealthcareProfessional generator: ProfessionalCountermeasures
+✅ Initialized 6 persona-specific generators
+
+=== Testing Tone and Format Recommendations ===
+VaccineHesitant:
+  Tone: respectful, non-judgmental, evidence-focused
+  Format: FAQ format, bullet points
+HealthAnxious:
+  Tone: reassuring, calm, specific
+  Format: step-by-step guidance
+SocialMediaUser:
+  Tone: engaging, shareable, visual-friendly
+  Format: infographic-ready, soundbites
+ChronicIllness:
+  Tone: detailed, nuanced, practical
+  Format: detailed explanation with caveats
+SkepticalParent:
+  Tone: understanding, family-focused, safety-oriented
+  Format: family-friendly Q&A
+HealthcareProfessional:
+  Tone: clinical, evidence-based, technical
+  Format: clinical summary with references
+✅ Tone and format recommendations working correctly
+
+=== Testing Effectiveness Scoring ===
+Case 1: Score = 0.97 (expected: 0.6-1.0)
+Case 2: Score = 0.12 (expected: 0.1-0.5)
+Case 3: Score = 0.03 (expected: 0.0-0.3)
+✅ Effectiveness scoring working correctly
+
+=== Testing Supported Personas ===
+Supported personas: 6
+  - VaccineHesitant
+  - HealthAnxious
+  - SocialMediaUser
+  - ChronicIllness
+  - SkepticalParent
+  - HealthcareProfessional
+✅ Supported personas list working
+
+=== Testing Targeted Countermeasure Generation ===
+Generated countermeasures for 2 personas:
+
+VaccineHesitant:
+  Tone: respectful, non-judgmental, evidence-focused
+  Format: FAQ format, bullet points
+  Effectiveness: 0.94
+  Text preview: It's perfectly understandable to want the highest assurances regarding vaccine safety, especially si...
+
+HealthAnxious:
+  Tone: reassuring, calm, specific
+  Format: step-by-step guidance
+  Effectiveness: 0.71
+  Text preview: Absolutely, it's natural to be concerned about your health when it comes to vaccines due to the pote...
+✅ Targeted countermeasure generation working
+
+=== Testing Batch Countermeasure Generation ===
+Batch generated countermeasures for 2 claims:
+
+Claim: Natural immunity is better than vaccines...
+  Personas addressed: 2
+    - VaccineHesitant
+    - HealthAnxious
+
+Claim: Side effects are very rare...
+  Personas addressed: 2
+    - SkepticalParent
+    - ChronicIllness
+✅ Batch countermeasure generation working
+
+=== Testing Integration with Existing Personas ===
+Existing personas: 12
+Supported by generator: 6
+Coverage: 6/12 personas
+Covered personas:
+  ✅ SkepticalParent
+  ✅ HealthAnxious
+  ✅ VaccineHesitant
+  ✅ ChronicIllness
+  ✅ HealthcareProfessional
+  ✅ SocialMediaUser
+Uncovered personas (will use default handling):
+  ⚠️ TrustingElder
+  ⚠️ BusyProfessional
+  ⚠️ NewParent
+  ⚠️ ElderlyCaregiver
+  ⚠️ FitnessEnthusiast
+  ⚠️ PregnantWoman
+✅ Integration coverage: 50.0%
+
+✅ v1.15 Countermeasure Optimization - Persona-targeted prebunk generation with effectiveness scoring

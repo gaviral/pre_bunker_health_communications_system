@@ -12,10 +12,30 @@ class AdaptiveRiskScorer(RiskScorer):
         self.learner = feedback_learner
         self.use_adaptive_scoring = True
     
-    async def score_claims(self, claims: List, options: Dict[str, Any] = None) -> Dict[str, Any]:
+    def score_claims(self, claims: List, options: Dict[str, Any] = None) -> Dict[str, Any]:
         """Score claims with adaptive adjustments"""
-        # Get base scoring from parent class
-        base_result = await super().score_claims(claims, options)
+        # Score each claim individually using parent class method
+        scored_claims = []
+        total_risk = 0.0
+        
+        for claim in claims:
+            if isinstance(claim, str):
+                claim_text = claim
+            else:
+                claim_text = getattr(claim, 'text', str(claim))
+            
+            score = self.score_claim(claim_text)
+            scored_claims.append({
+                'claim': claim_text,
+                'risk_score': score
+            })
+            total_risk += score
+        
+        base_result = {
+            'claims': scored_claims,
+            'overall_risk_score': total_risk / len(claims) if claims else 0.0,
+            'high_risk_claims': [c for c in scored_claims if c['risk_score'] > 0.7]
+        }
         
         if not self.use_adaptive_scoring:
             return base_result

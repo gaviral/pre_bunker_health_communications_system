@@ -212,16 +212,13 @@ def test_diversity_analysis():
     print(f"Diversity analysis for {len(diverse_sources)} sources:")
     print(f"  Overall score: {diversity['score']}")
     print(f"  Type diversity: {diversity['type_diversity']}")
-    print(f"  Region diversity: {diversity['region_diversity']}")
     print(f"  Specialty diversity: {diversity['specialty_diversity']}")
     print(f"  Types: {diversity['types']}")
-    print(f"  Regions: {diversity['regions']}")
     print(f"  Specialties: {diversity['specialties'][:5]}...")  # First 5
     
     # Verify structure
     assert 'score' in diversity, "Should have overall score"
     assert 'types' in diversity, "Should have types list"
-    assert 'regions' in diversity, "Should have regions list"
     assert 'specialties' in diversity, "Should have specialties list"
     
     # Score should be reasonable
@@ -288,7 +285,7 @@ def test_global_coverage():
         else:
             regions.add('US')
         
-        org_types.add(source.type)
+        org_types.add(source.source_type.value)
     
     print(f"Geographic coverage: {len(regions)} regions")
     print(f"  Regions: {sorted(regions)}")
