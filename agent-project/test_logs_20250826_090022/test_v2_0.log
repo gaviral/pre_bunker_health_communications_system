@@ -1,0 +1,21 @@
+=== TEST RUN: test_v2_0.py ===
+Timestamp: 2025-08-26T09:00:25.294218
+Return Code: 1
+
+=== STDOUT ===
+
+=== STDERR ===
+Traceback (most recent call last):
+  File "/Users/aviralgarg/code/agent/agent-project/test_v2_0.py", line 12, in <module>
+    from src.integration.complete_pipeline import CompletePrebunkerSystem, complete_prebunker_system
+  File "/Users/aviralgarg/code/agent/agent-project/src/integration/complete_pipeline.py", line 8, in <module>
+    from src.orchestration.pipeline import PrebunkerPipeline
+  File "/Users/aviralgarg/code/agent/agent-project/src/orchestration/pipeline.py", line 7, in <module>
+    from src.claims.extractor import ClaimExtractor
+  File "/Users/aviralgarg/code/agent/agent-project/src/claims/extractor.py", line 6, in <module>
+    from src.agent import Agent, model
+  File "/Users/aviralgarg/code/agent/agent-project/src/agent.py", line 1, in <module>
+    from openai import AsyncOpenAI
+ModuleNotFoundError: No module named 'openai'
+
+=== END ===
