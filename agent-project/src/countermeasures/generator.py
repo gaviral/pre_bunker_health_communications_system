@@ -39,22 +39,22 @@ Keep prebunks concise but complete.""",
         self.prebunk_templates = {
             'absolutist_claim': {
                 'template': "While {treatment} is {generally_effective}, individual results may vary. {additional_context} Consult your healthcare provider about your specific situation.",
-                'triggers': ['100%', 'always', 'never', 'guaranteed', 'completely'],
+                'triggers': ["100%", "always", "never", "guaranteed", "completely"],
                 'description': "Address absolutist language with appropriate nuance"
             },
             'safety_concern': {
                 'template': "{treatment} has been extensively tested and is considered safe for most people. {safety_details} Common side effects include {common_effects}. Serious side effects are rare but possible.",
-                'triggers': ['completely safe', 'no side effects', 'perfectly safe'],
+                'triggers': ["completely safe", "no side effects", "perfectly safe"],
                 'description': "Provide balanced safety information"
             },
             'conspiracy_theory': {
                 'template': "This recommendation comes from {authority_source} based on {evidence_type}. The decision-making process is transparent and regularly reviewed by independent experts. {additional_context}",
-                'triggers': ['conspiracy', 'control', 'hidden agenda', 'cover-up'],
+                'triggers': ["conspiracy", "control", "hidden agenda", "cover-up"],
                 'description': "Address conspiracy concerns with transparency"
             },
             'natural_fallacy': {
                 'template': "Both natural and synthetic treatments can be effective and safe when properly tested. {treatment} has undergone rigorous testing regardless of its origin. What matters is the evidence, not whether something is 'natural'.",
-                'triggers': ['natural is better', 'natural is safer', 'chemicals are bad'],
+                'triggers': ["natural is better", "natural is safer", "chemicals are bad"],
                 'description': "Address natural fallacy misconceptions"
             },
             'missing_evidence': {
