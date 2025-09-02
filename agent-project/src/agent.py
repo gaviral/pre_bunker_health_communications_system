@@ -32,7 +32,7 @@ class Agent:
             logger.info(f"Agent {self.name} processing message: {message[:50]}...")
             
             # Include tool schemas in prompt
-            tools_prompt = "\nAvailable tools: " + json.dumps(get_tool_schemas(), indent=2) if get_tool_schemas() else ""
+            tools_prompt = f"\nAvailable tools: {json.dumps(get_tool_schemas(), indent=2)}" if get_tool_schemas() else ""
             prompt = f"{self.instructions}\n\nUser: {message}{tools_prompt}"
             
             tracer.add_event(trace_id, "llm_call", {"prompt_length": len(prompt)})

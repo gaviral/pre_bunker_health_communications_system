@@ -420,12 +420,14 @@ class PrebunkerPipeline:
             risk_level = risk_report.get('overall_risk_assessment', 'unknown')
             risk_emoji = {'high_risk': '🔴', 'medium_risk': '🟡', 'low_risk': '🟢'}.get(risk_level, '⚪')
             
-            summary = f"{risk_emoji} Risk Assessment: {risk_level.replace('_', ' ').title()}\n"
-            summary += f"📊 Claims: {stats.get('total_claims', 0)} total, {stats.get('high_risk_claims', 0)} high-risk\n"
-            summary += f"🎭 Personas: {len(pipeline_result.get('persona_interpretations', []))} analyzed\n"
-            summary += f"📚 Evidence: {stats.get('evidence_coverage', 0)} claims validated\n"
-            summary += f"🛡️ Countermeasures: {stats.get('countermeasures_generated', 0)} generated\n"
-            summary += f"⏱️ Processed in {processing_time:.2f} seconds"
+            summary = (
+                f"{risk_emoji} Risk Assessment: {risk_level.replace('_', ' ').title()}\n"
+                f"📊 Claims: {stats.get('total_claims', 0)} total, {stats.get('high_risk_claims', 0)} high-risk\n"
+                f"🎭 Personas: {len(pipeline_result.get('persona_interpretations', []))} analyzed\n"
+                f"📚 Evidence: {stats.get('evidence_coverage', 0)} claims validated\n"
+                f"🛡️ Countermeasures: {stats.get('countermeasures_generated', 0)} generated\n"
+                f"⏱️ Processed in {processing_time:.2f} seconds"
+            )
             
             return summary
         
