@@ -1,59 +1,3 @@
-INFO:src.error_handler:Agent ClaimsExtractor processing message: Extract health claims from: Vaccines are 100% safe...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ClaimsExtractor completed without tool calls
-INFO:src.error_handler:Agent ImplicitClaimDetector processing message: 
-        Analyze this health communication text fo...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ImplicitClaimDetector completed without tool calls
-INFO:src.error_handler:Agent ContextAnalyzer processing message: 
-        Analyze the context and framing of this h...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ContextAnalyzer completed without tool calls
-INFO:src.error_handler:Agent ImplicitClaimDetector processing message: 
-        Analyze this health communication text fo...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ImplicitClaimDetector completed without tool calls
-INFO:src.error_handler:Agent ContextAnalyzer processing message: 
-        Analyze the context and framing of this h...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ContextAnalyzer completed without tool calls
-INFO:src.error_handler:Agent ClaimsExtractor processing message: Extract health claims from: This treatment always ...
-INFO:openai._base_client:Retrying request to /chat/completions in 0.392103 seconds
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ClaimsExtractor completed without tool calls
-INFO:src.error_handler:Agent ImplicitClaimDetector processing message: 
-        Analyze this health communication text fo...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ImplicitClaimDetector completed without tool calls
-INFO:src.error_handler:Agent ContextAnalyzer processing message: 
-        Analyze the context and framing of this h...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ContextAnalyzer completed without tool calls
-INFO:src.error_handler:Agent ImplicitClaimDetector processing message: 
-        Analyze this health communication text fo...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ImplicitClaimDetector completed without tool calls
-INFO:src.error_handler:Agent ContextAnalyzer processing message: 
-        Analyze the context and framing of this h...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ContextAnalyzer completed without tool calls
-INFO:src.error_handler:Agent ImplicitClaimDetector processing message: 
-        Analyze this health communication text fo...
-INFO:openai._base_client:Retrying request to /chat/completions in 0.451866 seconds
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ImplicitClaimDetector completed without tool calls
-INFO:src.error_handler:Agent ContextAnalyzer processing message: 
-        Analyze the context and framing of this h...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ContextAnalyzer completed without tool calls
-INFO:src.error_handler:Agent ImplicitClaimDetector processing message: 
-        Analyze this health communication text fo...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ImplicitClaimDetector completed without tool calls
-INFO:src.error_handler:Agent ContextAnalyzer processing message: 
-        Analyze the context and framing of this h...
-INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:src.error_handler:Agent ContextAnalyzer completed without tool calls
 ✅ PRE-BUNKER v2.0.0 system initialized with 10 capabilities
 === Testing Complete System Initialization ===
 ✅ PRE-BUNKER v2.0.0 system initialized with 10 capabilities
@@ -100,7 +44,7 @@ System status keys: ['version', 'capabilities', 'components', 'review_queue', 'l
 ✅ PRE-BUNKER v2.0.0 system initialized with 10 capabilities
 Analysis completed with status: error
 ⚠️ Analysis returned status: error
-  Error: 'EvidenceValidator' object has no attribute 'validate_claim_evidence'
+  Error: 'AdvancedClaimExtractor' object has no attribute 'extract_claims'
 ✅ Analysis pipeline framework ready
 
 === Testing A/B Testing Integration ===
