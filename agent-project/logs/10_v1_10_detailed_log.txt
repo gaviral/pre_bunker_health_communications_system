@@ -1,0 +1,95 @@
+INFO:src.error_handler:Agent RiskReporter processing message: 
+        Analyze this health communication risk as...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent RiskReporter completed without tool calls
+INFO:src.error_handler:Agent RiskReporter processing message: 
+        Analyze this health communication risk as...
+INFO:openai._base_client:Retrying request to /chat/completions in 0.499167 seconds
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent RiskReporter completed without tool calls
+INFO:src.error_handler:Agent EvidenceValidator processing message: 
+Claim to validate: "COVID-19 vaccines are 100% sa...
+INFO:src.error_handler:Agent Persona_SkepticalParent processing message: 
+Read this health message and respond as Skeptical...
+INFO:src.error_handler:Agent Persona_HealthAnxious processing message: 
+Read this health message and respond as HealthAnx...
+INFO:src.error_handler:Agent Persona_TrustingElder processing message: 
+Read this health message and respond as TrustingE...
+INFO:src.error_handler:Agent Persona_BusyProfessional processing message: 
+Read this health message and respond as BusyProfe...
+INFO:openai._base_client:Retrying request to /chat/completions in 0.400939 seconds
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_HealthAnxious completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_BusyProfessional completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_TrustingElder completed without tool calls
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent Persona_SkepticalParent completed without tool calls
+INFO:openai._base_client:Retrying request to /chat/completions in 0.942194 seconds
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent EvidenceValidator completed without tool calls
+INFO:src.error_handler:Agent PrebunkGenerator processing message: 
+        Original claim: "COVID-19 vaccines are 10...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent PrebunkGenerator completed without tool calls
+INFO:src.error_handler:Agent RiskReporter processing message: 
+        Analyze this health communication risk as...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent RiskReporter completed without tool calls
+=== Testing Risk Reporter Initialization ===
+✅ Risk reporter initialized with agent: RiskReporter
+
+=== Testing Base Metrics Calculation ===
+Base metrics calculated:
+  Total claims: 3
+  High-risk claims: 1
+  Average risk score: 0.53
+  Evidence coverage rate: 0.67
+  Personas with concerns: 2
+✅ Base metrics calculation working correctly
+
+=== Testing Risk Level Determination ===
+Metrics: {'high_risk_claims': 1, 'average_risk_score': 0.5, 'personas_with_concerns': 1, 'evidence_coverage_rate': 0.8} → high_risk (expected: high_risk)
+Metrics: {'high_risk_claims': 0, 'average_risk_score': 0.8, 'personas_with_concerns': 0, 'evidence_coverage_rate': 0.9} → high_risk (expected: high_risk)
+Metrics: {'high_risk_claims': 0, 'average_risk_score': 0.5, 'personas_with_concerns': 1, 'evidence_coverage_rate': 0.8} → medium_risk (expected: medium_risk)
+Metrics: {'high_risk_claims': 0, 'average_risk_score': 0.3, 'personas_with_concerns': 2, 'evidence_coverage_rate': 0.8} → medium_risk (expected: medium_risk)
+Metrics: {'high_risk_claims': 0, 'average_risk_score': 0.2, 'personas_with_concerns': 0, 'evidence_coverage_rate': 0.3} → medium_risk (expected: medium_risk)
+Metrics: {'high_risk_claims': 0, 'average_risk_score': 0.2, 'personas_with_concerns': 0, 'evidence_coverage_rate': 0.9} → low_risk (expected: low_risk)
+Metrics: {'high_risk_claims': 0, 'average_risk_score': 0.1, 'personas_with_concerns': 1, 'evidence_coverage_rate': 0.7} → low_risk (expected: low_risk)
+✅ Risk level determination logic working correctly
+
+=== Testing Key Findings Extraction ===
+Key findings extracted: 3
+  - CRITICAL: 2 high-risk claims detected requiring immediate revision
+  - EVIDENCE GAP: Only 30.0% of claims have supporting evidence
+  - AUDIENCE RISK: 3/4 audience segments show significant concerns
+✅ Key findings extraction working correctly
+
+=== Testing Basic Risk Report Generation ===
+Risk report generated successfully!
+  Overall risk: high_risk
+  Key findings: 2
+  Recommendations: 7
+  Priority actions: 3
+  Top finding: CRITICAL: 1 high-risk claims detected requiring immediate revision
+
+=== Testing Enhanced Analysis ===
+Enhanced analysis generated:
+  Length: 3361 characters
+  Preview: Based on the provided health communication risk assessment data, here's a structured report with expert insights:
+
+# Health Communication Risk Assessm...
+
+=== Testing Integrated Pipeline with Enhanced Reporting ===
+Processing message: COVID-19 vaccines are 100% safe and completely effective for everyone with no side effects.
+
+Enhanced Risk Report:
+  Overall Assessment: high_risk
+  Summary Statistics: {'total_claims': 1, 'high_risk_claims': 1, 'medium_risk_claims': 0, 'low_risk_claims': 0, 'average_risk_score': 0.8799999999999999, 'max_risk_score': 0.8799999999999999, 'personas_analyzed': 4, 'personas_with_concerns': 1, 'evidence_validations': 1, 'evidence_coverage_rate': 1.0, 'countermeasures_generated': 1, 'processing_time': 837.243767234002}
+  Key Findings: 1
+  Priority Actions: 2
+  Evidence Coverage: excellent (100.0%)
+  High-Risk Audience Segments: 1
+
+✅ v1.10 Risk Report Generation - Working with comprehensive risk assessment and actionable insights

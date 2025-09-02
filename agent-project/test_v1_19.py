@@ -281,12 +281,12 @@ async def test_adaptive_scoring_integration():
     try:
         # Get base scoring
         scorer.disable_adaptive_scoring()
-        base_result = await scorer.score_claims(test_claims)
+        base_result = scorer.score_claims(test_claims)
         base_score = base_result.get('overall_risk_score', 0.0)
         
         # Get adaptive scoring
         scorer.enable_adaptive_scoring()
-        adaptive_result = await scorer.score_claims(test_claims)
+        adaptive_result = scorer.score_claims(test_claims)
         adaptive_score = adaptive_result.get('overall_risk_score', 0.0)
         
         print(f"Base score: {base_score}, Adaptive score: {adaptive_score}")

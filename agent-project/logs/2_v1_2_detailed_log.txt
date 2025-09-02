@@ -1,0 +1,52 @@
+INFO:src.error_handler:Agent ClaimsExtractor processing message: Extract health claims from: 
+    The new RSV vacci...
+INFO:httpx:HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:src.error_handler:Agent ClaimsExtractor completed without tool calls
+=== Testing Pattern-Based Extraction ===
+
+Text: COVID-19 vaccines are 100% effective against severe disease. They prevent hospitalization in most cases.
+Pattern Claims Found: 1
+  1. COVID-19 vaccines are 100% effective against severe disease
+
+Text: Naloxone reverses opioid overdoses quickly and safely. Take 2mg immediately when overdose is suspected.
+Pattern Claims Found: 0
+
+Text: WHO recommends vaccination for all adults. Studies show vaccines reduce transmission by 90%.
+Pattern Claims Found: 1
+  1. Studies show vaccines reduce transmission by 90%
+
+Text: This natural remedy is better than prescription medication. It has no side effects and always works.
+Pattern Claims Found: 2
+  1. This natural remedy is better than prescription medication
+  2. It has no side effects and always works
+
+=== Testing Claim Classification ===
+Text: Vaccines are 100% safe and effective. Take the shot daily if you have symptoms. WHO says it prevents all diseases.
+Claims Found: 2
+
+  Claim 1: Vaccines are 100% safe and effective
+    Type: ClaimType.EFFICACY
+    Absolutist: True
+    Medical Entities: []
+    Risk Score: 0.90
+
+  Claim 2: WHO says it prevents all diseases
+    Type: ClaimType.EFFICACY
+    Absolutist: False
+    Medical Entities: ['WHO']
+    Risk Score: 0.60
+
+=== Testing LLM-Based Extraction ===
+Text: 
+    The new RSV vaccine provides excellent protection for infants and elderly patients. 
+    Clinical trials demonstrate 85% efficacy in preventing severe respiratory symptoms.
+    However, some patients may experience mild side effects like fever or soreness.
+    It's important to consult your healthcare provider before vaccination, especially 
+    if you have underlying health conditions or allergies.
+    
+LLM Extracted Claims:
+CLAIM: However, some patients may experience mild side effects like fever or soreness
+CLAIM: Clinical trials demonstrate 85% efficacy in preventing severe respiratory symptoms
+CLAIM: The new RSV vaccine provides excellent protection for infants and elderly patients.
+
+✅ v1.2 Basic Claim Extraction - Working with pattern matching and LLM integration ready

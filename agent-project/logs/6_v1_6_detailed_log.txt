@@ -1,0 +1,130 @@
+=== Testing Evidence Sources ===
+Total trusted sources: 8
+
+Source: World Health Organization (WHO)
+  Authority Score: 0.95
+  Type: government
+  Specialties: ['global health', 'disease outbreaks', 'vaccination guidelines']...
+  Content Types: ['guidelines', 'fact sheets', 'recommendations', 'reports']
+  Limitations: 2 noted
+
+Source: Centers for Disease Control and Prevention (CDC)
+  Authority Score: 0.95
+  Type: government
+  Specialties: ['US health policy', 'disease surveillance', 'prevention']...
+  Content Types: ['guidelines', 'surveillance data', 'recommendations', 'fact sheets']
+  Limitations: 2 noted
+
+Source: Cochrane Library
+  Authority Score: 0.9
+  Type: research_organization
+  Specialties: ['systematic reviews', 'evidence synthesis', 'meta-analyses']...
+  Content Types: ['systematic reviews', 'meta-analyses', 'clinical trials']
+  Limitations: 2 noted
+✅ Source definitions working
+
+=== Testing Evidence Searcher ===
+
+Claim: COVID-19 vaccines are safe and effective
+  Relevant sources found: 8
+    World Health Organization (WHO) (score: 0.95) - terms: ['vaccine']
+    Centers for Disease Control and Prevention (CDC) (score: 0.95) - terms: ['vaccine']
+
+Claim: Children should receive routine immunizations
+  Relevant sources found: 8
+    World Health Organization (WHO) (score: 0.95) - terms: ['immunization']
+    Centers for Disease Control and Prevention (CDC) (score: 0.95) - terms: ['immunization']
+
+Claim: This medication has serious side effects
+  Relevant sources found: 8
+    World Health Organization (WHO) (score: 0.95) - terms: ['medication', 'side effects']
+    Centers for Disease Control and Prevention (CDC) (score: 0.95) - terms: ['medication', 'side effects']
+
+Claim: WHO recommends this treatment approach
+  Relevant sources found: 8
+    World Health Organization (WHO) (score: 0.95) - terms: ['treatment']
+    Centers for Disease Control and Prevention (CDC) (score: 0.95) - terms: ['treatment']
+✅ Source search working
+
+=== Testing Source Lookup and Filtering ===
+Government sources: 3
+  World Health Organization (WHO) (0.95)
+  Centers for Disease Control and Prevention (CDC) (0.95)
+  U.S. Food and Drug Administration (FDA) (0.9)
+Academic sources: 1
+  PubMed/NCBI (0.85)
+
+Top 3 authority sources:
+  1. World Health Organization (WHO) (0.95)
+  2. Centers for Disease Control and Prevention (CDC) (0.95)
+  3. Cochrane Library (0.9)
+✅ Source lookup and filtering working
+
+=== Testing Credibility Assessment ===
+
+URL: https://www.who.int/news-room/fact-sheets/detail/vaccines
+  Source: World Health Organization (WHO)
+  Authority Score: 0.95
+  Credibility Level: very_high
+  Specialties: ['global health', 'disease outbreaks']...
+  Limitations: ['May not cover country-specific recommendations']...
+
+URL: https://www.cdc.gov/vaccines/safety/
+  Source: Centers for Disease Control and Prevention (CDC)
+  Authority Score: 0.95
+  Credibility Level: very_high
+  Specialties: ['US health policy', 'disease surveillance']...
+  Limitations: ['US-focused']...
+
+URL: https://www.cochranelibrary.com/cdsr/reviews
+  Source: Cochrane Library
+  Authority Score: 0.9
+  Credibility Level: very_high
+  Specialties: ['systematic reviews', 'evidence synthesis']...
+  Limitations: ['May not have reviews for very new treatments']...
+
+URL: https://randommedicalwebsite.com/health-advice
+  Source: Unknown
+  Authority Score: 0.0
+  Credibility Level: unverified
+  Specialties: []...
+  Limitations: ['Source not in trusted database']...
+
+URL: https://www.fda.gov/drugs/drug-safety-and-availability
+  Source: U.S. Food and Drug Administration (FDA)
+  Authority Score: 0.9
+  Credibility Level: very_high
+  Specialties: ['drug approval', 'medical devices']...
+  Limitations: ['US regulatory focus']...
+✅ Credibility assessment working
+
+=== Testing Source Summary ===
+Source Database Summary:
+  Total Sources: 8
+  By Type: {'government': 3, 'research_organization': 1, 'academic': 1, 'medical_institution': 1, 'professional_society': 2}
+  Authority Distribution: {'very_high': 4, 'high': 4}
+  Specialty Areas Covered: 44
+  Top Authority Sources:
+    World Health Organization (WHO) (0.95)
+    Centers for Disease Control and Prevention (CDC) (0.95)
+    Cochrane Library (0.9)
+    U.S. Food and Drug Administration (FDA) (0.9)
+    PubMed/NCBI (0.85)
+✅ Source summary generation working
+
+=== Testing Search Term Extraction ===
+
+Claim: COVID-19 vaccination prevents severe disease
+  Search terms for WHO: ['vaccination', 'disease']
+
+Claim: This medication causes side effects in children
+  Search terms for WHO: ['medication', 'side effects']
+
+Claim: Global health authorities recommend this treatment
+  Search terms for WHO: ['treatment', 'global health']
+
+Claim: The cooking recipe is delicious
+  Search terms for WHO: []
+✅ Search term extraction working
+
+✅ v1.6 Evidence Source Framework - Working with trusted sources and search capability
