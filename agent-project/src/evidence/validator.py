@@ -87,6 +87,22 @@ Be precise and avoid speculation. Focus on what the evidence actually shows.""",
         
         return validation_result
     
+    async def validate_claim_evidence(self, claim_text: str) -> Dict[str, Any]:
+        """
+        Validate claim against evidence sources (compatibility alias)
+        
+        NOTE: This is a compatibility method for API integration.
+        For new code, prefer validate_claim().
+        For multiple claims, use validate_multiple_claims() for better performance.
+        
+        Args:
+            claim_text: Health claim to validate
+            
+        Returns:
+            Dict with validation results, sources, confidence
+        """
+        return await self.validate_claim(claim_text)
+    
     def _create_validation_context(self, claim_text: str, sources: List[EvidenceSource]) -> str:
         """Create context prompt for LLM validation"""
         

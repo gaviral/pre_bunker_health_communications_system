@@ -145,8 +145,8 @@ update_tracker
     
     cd agent-project
     
-    # Try to run the test
-    if uv run python "tests/${TEST_NAME}.py" >> "../$RESULT_FILE" 2>&1; then
+    # Try to run the test with proper Python path
+    if PYTHONPATH=. uv run python "tests/${TEST_NAME}.py" >> "../$RESULT_FILE" 2>&1; then
         END_TIME=$(date +%s)
         DURATION=$((END_TIME - START_TIME))
         echo "" >> "../$RESULT_FILE"
