@@ -1,10 +1,13 @@
 """Advanced claim detection with implicit claims and context analysis"""
 
 import re
+import logging
 from typing import List, Dict, Any, Tuple
 from src.agent import Agent, model
 from src.health_kb.claim_types import HealthClaim, ClaimType
 from .extractor import ClaimExtractor
+
+logger = logging.getLogger(__name__)
 
 class AdvancedClaimExtractor(ClaimExtractor):
     """Enhanced claim extractor with implicit claim detection and context analysis"""
@@ -136,7 +139,7 @@ Analyze how the context might change the meaning or impact of health claims.""",
             response = await self.implicit_claim_agent.run(analysis_prompt)
             return self._parse_implicit_claims_response(response)
         except Exception as e:
-            print(f"Error in implicit claim extraction: {e}")
+            logger.error(f"Error in implicit claim extraction: {e}")
             return []
     
     def _parse_implicit_claims_response(self, response: str) -> List[Dict[str, Any]]:
@@ -174,7 +177,7 @@ Analyze how the context might change the meaning or impact of health claims.""",
                         claims.append(claim_data)
                         
                 except Exception as e:
-                    print(f"Error parsing implicit claim section: {e}")
+                    logger.error(f"Error parsing implicit claim section: {e}")
                     continue
         
         return claims
@@ -208,7 +211,7 @@ Analyze how the context might change the meaning or impact of health claims.""",
                 'authority_appeals': 'authority' in response.lower() or 'expert' in response.lower()
             }
         except Exception as e:
-            print(f"Error in context analysis: {e}")
+            logger.error(f"Error in context analysis: {e}")
             return {'error': str(e)}
     
     def _detect_implicit_patterns(self, text: str) -> List[Dict[str, Any]]:

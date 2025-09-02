@@ -118,7 +118,7 @@ class ABTestSimulator:
             # Extract numeric score (basic parsing)
             score = float(score_response.strip())
             return max(0.0, min(1.0, score))
-        except:
+        except (ValueError, TypeError, AttributeError) as e:
             # Fallback to heuristic scoring
             return self.calculate_readability_score(message_text)
     

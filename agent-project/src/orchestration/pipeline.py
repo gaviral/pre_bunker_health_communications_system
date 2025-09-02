@@ -1,8 +1,11 @@
 """Integration pipeline orchestrating all PRE-BUNKER components end-to-end"""
 
 import asyncio
+import logging
 from typing import Dict, List, Any, Optional
 from datetime import datetime
+
+logger = logging.getLogger(__name__)
 
 from src.claims.extractor import ClaimExtractor
 from src.claims.risk_scorer import RiskScorer
@@ -59,7 +62,7 @@ class PrebunkerPipeline:
         try:
             # Step 1: Extract claims from the message
             if opts['detailed_logging']:
-                print(f"[Pipeline] Step 1: Extracting claims from message...")
+                logger.info(f"[Pipeline] Step 1: Extracting claims from message...")
             
             extracted_claims = await self._extract_claims(message_text, opts)
             pipeline_result['claims'] = extracted_claims
@@ -73,18 +76,18 @@ class PrebunkerPipeline:
             
             # Step 2: Risk analysis
             if opts['detailed_logging']:
-                print(f"[Pipeline] Step 2: Analyzing risk for {len(extracted_claims)} claims...")
+                logger.info(f"[Pipeline] Step 2: Analyzing risk for {len(extracted_claims)} claims...")
             
             risk_analysis = await self._analyze_risk(extracted_claims, opts)
             pipeline_result['risk_analysis'] = risk_analysis
             
             # Step 3: Persona interpretations (in parallel with evidence validation)
             if opts['detailed_logging']:
-                print(f"[Pipeline] Step 3: Getting persona interpretations...")
+                logger.info(f"[Pipeline] Step 3: Getting persona interpretations...")
             
             # Step 4: Evidence validation (in parallel with persona interpretations)
             if opts['detailed_logging']:
-                print(f"[Pipeline] Step 4: Validating evidence...")
+                logger.info(f"[Pipeline] Step 4: Validating evidence...")
             
             if opts['parallel_processing']:
                 # Run persona interpretation and evidence validation in parallel
