@@ -1,6 +1,0 @@
-=== TEST RUN: test_v1_1.py ===
-Timestamp: 2025-08-26T09:02:02-07:00
-Command: python3 test_v1_1.py
-
-./run_all_tests.sh: line 81: timeout: command not found
-Return Code: 127

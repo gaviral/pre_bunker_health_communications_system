@@ -1,8 +1,0 @@
-Test Runner Started: Tue Aug 26 09:02:02 PDT 2025
-Log Directory: test_logs_20250826_090202
-Total Tests: 11
-============================================================
-
-STARTING SEQUENTIAL TEST EXECUTION
-[1/11] Running test_v1_1.py
-FAILED: test_v1_1.py completed with return code 127
