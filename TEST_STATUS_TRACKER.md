@@ -1,33 +1,34 @@
-# 🧪 Asynchronous Test Status Tracker
+# 📊 Test Status Tracker
 
-## Current Test Execution Status
+## Current Tests
 
-| Test ID | Test Name | Status | Started | Duration | Result File | Notes |
-|---------|-----------|--------|---------|----------|-------------|--------|
-| test_v2_0 | Test V2 0 | 🔵 Running | 2025-09-02T14:53:29-07:00 |  | async_test_logs/test_v2_0_20250902_145329.log | - |
-| test_v1_7 | Test V1 7 | 🔵 Running | 2025-09-02T15:14:41-07:00 |  | async_test_logs/test_v1_7_20250902_151441.log | - |
-| test_v1_9 | Test V1 9 | ❌ Failed | 2025-09-02T15:14:48-07:00 | 1s | async_test_logs/test_v1_9_20250902_151447.log | - |
+| Test ID | Test Name | Status | Duration | Result File | Notes |
+|---------|-----------|--------|----------|-------------|-------|
+| - | - | - | - | - | No active tests |
 
-## Status Legend
-- ⚪ **Ready**: Not started
-- 🔵 **Running**: Test in progress  
-- ✅ **Passed**: Test completed successfully
-- ❌ **Failed**: Test failed with errors
-- ⏸️ **Timeout**: Test exceeded time limit
-- 🔄 **Queued**: Waiting to start
+## Test History
 
-## Quick Actions
-- **Start Test**: `./run_async_test.sh <test_name>`
-- **Check Status**: `./check_test_status.sh`
-- **View Results**: Check the Result File column for completed tests
+### Recent Activity
+- **2025-09-02**: Cleaned up all async test processes and logs for fresh start
 
-## Test Queue
-*Tests waiting to be executed will appear here*
+## Usage
 
-## Recent Results Summary
-*Summary of last 5 completed tests will appear here*
+### Start a test
+```bash
+./run_async_test.sh <test_name>
+```
 
----
-**Last Updated**: 2025-09-02 15:14:48
-**Total Tests Run**: 0
-**Success Rate**: N/A
+### Check status
+```bash
+./check_test_status.sh
+```
+
+### View logs
+```bash
+tail -f async_test_logs/<test_file>
+```
+
+## Notes
+- Tests run in background to avoid timeout issues
+- Status updated automatically by run_async_test.sh
+- Each test gets unique timestamped log file
